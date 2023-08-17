@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Event;
+use App\Models\Event_Role;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('event_attendees', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(user_id::class);
-            $table->foreignIdFor(event_id::class);
-            $table->foreignIdFor(event_role_id ::class);
+            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Event::class);
+            $table->foreignIdFor(Event_Role::class);
             $table->timestamps();
             $table->string('status');
         });

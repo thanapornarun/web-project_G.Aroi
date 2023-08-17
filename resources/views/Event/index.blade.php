@@ -17,12 +17,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
         let slideIndex = 1;
@@ -230,31 +225,9 @@
                 <li style="padding: 0px;"><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="#"><i class="fa-regular fa-calendar-plus"></i> Event Create</a></li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
-                @if( Auth::check() )
-                        {{ Auth::user()->name }}
-                    <div>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit">Logout</button>
-                    </form>
-                </div>
-        </div>
-        @else
-        <li>
-            <a href="{{route('register')}}">
-                <i class="fa-solid fa-user"></i> Register
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('login')}} ">
-                <i class="fa-solid fa-right-to-bracket"></i> Login
-            </a>
-        </li>
-        </div>
-        @endif
-        </ul>
+                <li><a href="{{ route('welcome') }}"><i class="fa-solid fa-user"></i> Logout</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -294,7 +267,7 @@
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
         </div>
-
+        
     </section>
 
 </body>

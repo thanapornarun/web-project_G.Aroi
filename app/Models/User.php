@@ -48,14 +48,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function Event_Role(): HasOne
-    {
-        return $this->hasOne(Event_Role::class);
-    }
-
-    public function Profile(): HasOne
+    public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function event_Role(): HasOne
+    {
+        return $this->hasOne(Event_Role::class);
     }
 
     public function eventAttendees(): HasMany
@@ -63,13 +63,13 @@ class User extends Authenticatable
         return $this->hasMany(EventAttendee::class);
     }
 
-    public function Certificate(): HasMany
+    public function certificate(): HasMany
     {
         return $this->HasMany(Event::class, 'event_attendees');
     }
 
-    public function Task(): HasMany
+    public function tasks(): HasMany
     {
-        return $this->HasMany(Profile::class);
+        return $this->hasMany(Task::class);
     }
 }
