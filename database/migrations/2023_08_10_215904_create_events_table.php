@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('event_poster_path');
             $table->string('event_name');
+            $table->string('event_place');
             $table->integer('attendee_count');
             $table->string('description');
             $table->datetime('start_data');
