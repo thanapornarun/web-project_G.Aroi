@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpKernel\EventListener\ProfilerListener;
 
 class UserController extends Controller
 {
@@ -14,7 +16,7 @@ class UserController extends Controller
     {
         $user = User::get();
         return view('user.index', [
-            'artists' => $user
+            'user' => $user
         ]);
     }
 
@@ -31,14 +33,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $artists_name = $request->get('name');
-        // if ($artists_name == null) {
-        //     return redirect()->back();
-        // }
-        // $artist = new Artist();
-        // $artist->name = $artists_name;
-        // $artist->save();
-        // return redirect()->route('artists.index');
+        //
     }
 
     /**
@@ -71,5 +66,24 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function createProfile(User $user) {
+        return view('users.create-profile', ['user' => $user]);
+    }
+    
+    
+    public function storeProfile(Request $request, User $user) {
+        $profile = new Profile();
+        $profile->full_name = $request->get('full_name');
+        $profile->gender = $request->get('gender');
+        $profile->address = $request->get('address');
+        $profile->phone_number = $request->get('phone_number');
+        $profile->profile_picture = 'images/user.png';
+        $profile->data_of_birth = $request->get('data_of_birth');
+        
+        $user->profile()->save($user);
+
+        return redirect()->route('login');
     }
 }

@@ -1,16 +1,19 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,600" rel="stylesheet" type="text/css">
+
 
 <style>
     body {
         background-color: #b8c1ec;
-        color: #232946;
         font-family: 'Poppins';
+        color: #232946
     }
 
     .navbar-inverse {
         padding-top: 15px;
         font-weight: bold;
         font-size: 18px;
+        color: #232946;
     }
 
     .navbar-brand {
@@ -44,7 +47,7 @@
 </style>
 
 <body>
-    <nav class="navbar navbar-inverse" style="background-color: #eebbc3; height: 80px">
+    <nav class="navbar navbar-inverse" style="background-color: #eebbc3; height: 80px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">
@@ -59,7 +62,8 @@
                 <div class="navbar-nav">
                     @if(Auth::check())
                     <div class="dropdown" style="padding-right: 30px;">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ Auth::user()->name }}
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="color: #232946; background-color: #b8c1ec">
+                            <i class="fa-solid fa-user" style="padding-right: 5px;"></i> {{ Auth::user()->name }}
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="/profile">My Profile</a></li>

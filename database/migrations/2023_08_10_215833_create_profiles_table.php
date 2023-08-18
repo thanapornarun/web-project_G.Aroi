@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone_number');
             $table->string('profile_picture')->default('/images/user.png');
-            $table->datetime('data_of_birth');
+            $table->date('data_of_birth');
         });
     }
 

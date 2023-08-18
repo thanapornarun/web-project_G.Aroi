@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,13 @@ authenticated users. */
 
 
 Route::resource('/profile', ProfileController::class);
+
+Route::get('/{user}/profile',
+        [ UserController::class, 'createProfile' ])->name('users.profile.create');
+        
+Route::post('/{user}/profile',
+        [ UserController::class, 'storeProfile'])->name('users.profile.store');
+
 
 // Route::get('/profile', [ProfileController::class, 'index'])
 //     ->name('profile.index');
