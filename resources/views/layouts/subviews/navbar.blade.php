@@ -68,7 +68,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="/profile">My Profile</a></li>
                             <li><a href="#">My Event</a></li>
-                            <li><a href="#"><i class="fa-regular fa-calendar-plus"></i> Event</a></li>
+                            <li><a href="#"><i class="fa-regular fa-calendar-plus" style="padding-right: 5px;"></i> Crete Event</a></li>
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button type="submit" class="dropdown-item" style="padding-left: 30px;">Logout</button>

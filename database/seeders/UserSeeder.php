@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
     {
         User::factory(5)
             ->hasProfile(1)
+            ->hasEvents(2)
             ->create();
     }
 }
