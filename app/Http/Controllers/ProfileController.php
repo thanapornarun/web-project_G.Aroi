@@ -12,7 +12,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $profile = Profile::with('user')->paginate(1);
+
+        return view('profile.index', [
+            'profile' => $profile
+        ]);
     }
 
     /**
@@ -63,5 +67,5 @@ class ProfileController extends Controller
         //
     }
 
-    
+
 }

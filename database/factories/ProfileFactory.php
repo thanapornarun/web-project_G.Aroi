@@ -20,8 +20,8 @@ class ProfileFactory extends Factory
         $genders = ['female', 'male', 'not specified'];
 
         return [
-            'full_name' => fake()->name(10, 20, 5),
             'user_id' => User::inRandomorder()->first()->id,
+            'full_name' => $this->faker->unique()->randomElement(User::pluck('name')),
             'gender' => $this->faker->randomElement($genders),
             'address' =>fake()->address(),
             'phone_number' => fake()->phoneNumber(),

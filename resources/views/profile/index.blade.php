@@ -25,7 +25,7 @@
             </div>
             <div class="border-t border-gray-200 sm:p-0" style="padding: 60px;">
                 <div class="animate-pulse rounded-full h-20 w-20 bg-gray-400 mb-4" style="margin-left: 30px;">
-                    <img src="/images/user.png" alt=""> </img>
+                    <img src="{{ asset(Auth::user()->profile->profile_picture) }}" alt="Profile Picture"> </img>
                 </div>
 
                 <div class="max-w-sm">
@@ -37,12 +37,13 @@
                 </div>
 
                 <dl class="sm:divide-y sm:divide-gray-200">
+                    @if(Auth::check())
                     <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
-                            Full name
+                            FullName
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            John Doe
+                            {{ Auth::user()->profile->full_name }}
                         </dd>
                     </div>
                     <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -50,23 +51,7 @@
                             gender
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            female
-                        </dd>
-                    </div>
-                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Email address
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            johndoe@example.com
-                        </dd>
-                    </div>
-                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
-                            Phone number
-                        </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            (123) 456-7890
+                            {{ Auth::user()->profile->gender }}
                         </dd>
                     </div>
                     <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -74,10 +59,26 @@
                             Address
                         </dt>
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                            123 Main St<br>
-                            Anytown, USA 12345
+                            {{ Auth::user()->profile->address }}
                         </dd>
                     </div>
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Phone number
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ Auth::user()->profile->phone_number }}
+                        </dd>
+                    </div>
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Birthday
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            {{ Auth::user()->profile->data_of_birth }}
+                        </dd>
+                    </div>
+                    @endif
                 </dl>
             </div>
         </div>

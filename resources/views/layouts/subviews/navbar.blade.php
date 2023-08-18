@@ -62,7 +62,7 @@
                         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ Auth::user()->name }}
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
-                            <li><a href="/my_profile">My Profile</a></li>
+                            <li><a href="/profile">My Profile</a></li>
                             <li><a href="#">My Event</a></li>
                             <li><a href="#"><i class="fa-regular fa-calendar-plus"></i> Event</a></li>
                             <form action="{{ route('logout') }}" method="POST">
