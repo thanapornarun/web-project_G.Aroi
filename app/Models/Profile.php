@@ -13,4 +13,8 @@ class Profile extends Model
     public function User(): BelongsTo {
         return $this->belongsTo(User::class);
     }
+
+    protected $enum = [
+        'gender' => ['female', 'male', 'not specified'],
+    ];
 }

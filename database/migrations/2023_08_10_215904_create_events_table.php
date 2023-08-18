@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('description');
             $table->datetime('start_data');
             $table->datetime('end_data');
-            $table->datetime('event_date');
         });
     }
 

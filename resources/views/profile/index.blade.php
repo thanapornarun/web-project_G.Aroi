@@ -13,20 +13,73 @@
 </head>
 
 <body>
-
     <div class="container">
-        <h2>Dropdowns</h2>
-        <p>The .dropdown class is used to indicate a dropdown menu.</p>
-        <p>Use the .dropdown-menu class to actually build the dropdown menu.</p>
-        <p>To open the dropdown menu, use a button or a link with a class of .dropdown-toggle and data-toggle="dropdown".</p>
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
-                <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-                <li><a href="#">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">JavaScript</a></li>
-            </ul>
+        <div class="bg-white overflow-hidden shadow rounded-lg border">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    User Profile
+                </h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                    This is your profile page.
+                </p>
+            </div>
+            <div class="border-t border-gray-200 sm:p-0" style="padding: 60px;">
+                <div class="animate-pulse rounded-full h-20 w-20 bg-gray-400 mb-4" style="margin-left: 30px;">
+                    <img src="/images/user.png" alt=""> </img>
+                </div>
+
+                <div class="max-w-sm">
+                    <label for="photobutton" class="text-xs font-medium text-gray-500">Your Photo</label>
+                    <div class="relative z-0 mt-0.5 flex w-full -space-x-   px">
+                        <input id="photobutton" type="file" class="block w-full cursor-pointer appearance-none rounded-l-md border border-gray-200 bg-white px-3 py-2 text-sm transition focus:z-10 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75">
+                        <button type="submit" class="inline-flex w-auto cursor-pointer select-none appearance-none items-center justify-center space-x-1 rounded-r border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 transition hover:border-gray-300 hover:bg-gray-100 focus:z-10 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300">Save</button>
+                    </div>
+                </div>
+
+                <dl class="sm:divide-y sm:divide-gray-200">
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Full name
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            John Doe
+                        </dd>
+                    </div>
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            gender
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            female
+                        </dd>
+                    </div>
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Email address
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            johndoe@example.com
+                        </dd>
+                    </div>
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Phone number
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            (123) 456-7890
+                        </dd>
+                    </div>
+                    <div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">
+                            Address
+                        </dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                            123 Main St<br>
+                            Anytown, USA 12345
+                        </dd>
+                    </div>
+                </dl>
+            </div>
         </div>
     </div>
 

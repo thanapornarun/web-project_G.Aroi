@@ -17,10 +17,10 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignIdFor(User::class);
             $table->string('full_name');
-            $table->string('gender');
+            $table->enum('gender', ['female', 'male', 'not specified'])->default('not specified');
             $table->string('address');
             $table->string('phone_number');
-            $table->string('profile_image')->nullable();
+            $table->string('profile_picture')->default('/images/user.png');
             $table->datetime('data_of_birth');
         });
     }
