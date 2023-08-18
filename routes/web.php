@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/my_profile', function () {
+    return view('profile.index');
+});
 
 // Route::get('/web-login', LoginController::class)->name('web.login');
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('activity_details');
             $table->string('activity');
+            $table->enum('status', ['to do', 'in progress', 'done'])->default('to do'); // Define the status column as an ENUM with default 'to do'
         });
     }
 
