@@ -12,12 +12,12 @@ class Budget extends Model
 {
     use HasFactory;
 
-    public function Event(): BelongsToMany
+    public function event(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
     }
 
-    public function Expenses(): HasMany
+    public function expenses(): HasMany
     {
         return $this->hasMany(Expense::class);
 

@@ -18,7 +18,7 @@ class ExpenseFactory extends Factory
     public function definition(): array
     {
         return [
-            'expense_id' => Budget::inRandomorder()->first()->id,
+            'budget_id' => Budget::inRandomorder()->first()->id,
             'bill_name'=>fake()->name(),
             'bill_path'=>fake()->name(),
             'description'=>fake()->realText(),
