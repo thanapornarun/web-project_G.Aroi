@@ -13,8 +13,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Artist::get();
-        return view('event.index',['events' => $events]);
+        $events = Event::get();
+        return view('event.index');
     }
 
     /**

@@ -15,8 +15,8 @@ class Event extends Model
         return $this->hasMany(User::class, 'event_attendees');
     }
 
-    public function Expense(): HasMany
+    public function Budget(): HasMany
     {
-        return $this->HasMany(Expense::class);
+        return $this->belongsTo(Budget::class);
     }    
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BudgetController;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,7 +36,11 @@ authenticated users. */
 // });
 
 
-Route::resource('/profile', ProfileController::class);
+Route::get('/profile', [ProfileController::class,'index'])->name('budget.index');
+
+Route::resource('/{event}/budget',BudgetController::class);
+Route::get('/{event}/budget/create',[BudgetController::class,'createExpense'])->name('budget.expense.create');
+Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->name('budget.expense.store');
 
 // Route::get('/profile', [ProfileController::class, 'index'])
 //     ->name('profile.index');
