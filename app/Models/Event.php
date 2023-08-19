@@ -22,9 +22,9 @@ class Event extends Model
         return $this->hasMany(eventAttendee::class);
     }
 
-    public function expenses(): HasMany
+    public function budgets(): HasMany
     {
-        return $this->HasMany(Expense::class);
+        return $this->hasMany(Budget::class);
     }    
     
     public function owner()

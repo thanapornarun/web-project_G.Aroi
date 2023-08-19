@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\UserController;
 use App\Models\Event;
 use App\Models\Profile;
@@ -38,6 +39,14 @@ Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('e
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+Route::get('/profile', [ProfileController::class,'index'])->name('budget.index');
+
+Route::resource('/{event}/budget',BudgetController::class);
+
+Route::get('/{event}/budget/create',[BudgetController::class,'createExpense'])->name('budget.expense.create');
+
+Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->name('budget.expense.store');
 
 Route::resource('/profile', ProfileController::class);
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Event;
+use App\Models\Budget;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,12 +15,13 @@ return new class extends Migration
     {
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Event::class);
+            $table->foreignIdFor(Budget::class);
             $table->timestamps();
+            $table->string('bill_name');
+            $table->string('bill_path');
             $table->string('description');
             $table->decimal('amount');
             $table->datetime('expense_date');
-            $table->decimal('category_id');
         });
     }
 

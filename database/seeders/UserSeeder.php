@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Budget;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,13 @@ class UserSeeder extends Seeder
         User::factory(5)
             ->hasProfile(1)
             ->hasEvents(2)
-            ->create();
+            ->create()
+            ->each(function ($user) {
+                $user->events->each(function ($event) {
+                    $event->budgets()->saveMany(Budget::factory(3)->create([
+                        'event_id' => $event->id,
+                    ]));
+                });
+            });
     }
 }
