@@ -13,8 +13,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        $event = Artist::get();
-        return view('event.index',['events' => $events]);
+        $events = Event::all();
+        return view('event.index', ['events' => $events]);
     }
 
     /**
@@ -22,18 +22,18 @@ class EventController extends Controller
      */
     public function create(User $user)
     {
-        return view('event.create',['user' => $user]);
+        return view('event.create', ['user' => $user]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request,User $user)
+    public function store(Request $request, User $user)
     {
-        
+
         $event_name =  $request->get('name');
 
-        $request->validate(['name' => ['required','string','min:3','max:255']]);
+        $request->validate(['name' => ['required', 'string', 'min:3', 'max:255']]);
 
         $event = new Event();
         $event->event_name = $request->get('name');
@@ -52,7 +52,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('event.show',['event'=>$event]);
+        return view('event.show', ['event' => $event]);
     }
 
     /**
@@ -60,7 +60,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('event.edit',['user' => $user]);
+        return view('event.edit', ['event' => $event]);
     }
 
     /**
@@ -68,12 +68,12 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        $request->validate(['name' => ['required','string','min:3','max:255']]);
+        $request->validate(['name' => ['required', 'string', 'min:3', 'max:255']]);
 
         $event->name = $request->get('name');
         $event->save();
 
-        return redirect()->route('event.show',['event'=>$event]);
+        return redirect()->route('event.show', ['event' => $event]);
     }
 
     /**
@@ -81,7 +81,13 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        
+
         return redirect()->route('event.index');
+    }
+
+    public function showWelcomeWithLatestEvent()
+    {
+        $latestEvents = Event::latest()->take(6)->get();;
+        return view('welcome', ['latestEvents' => $latestEvents]);
     }
 }

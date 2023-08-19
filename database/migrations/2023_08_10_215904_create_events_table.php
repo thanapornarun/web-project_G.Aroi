@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('description');
             $table->datetime('start_data');
             $table->datetime('end_data');
+            $table->enum('Category', ['Education', 'Music and Festival']);
         });
     }
 

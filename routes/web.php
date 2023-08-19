@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\Event;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -19,8 +21,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+        return view('welcome');
 });
+
+Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('event');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -38,11 +43,15 @@ authenticated users. */
 
 Route::resource('/profile', ProfileController::class);
 
-Route::get('/{user}/profile',
-        [ UserController::class, 'createProfile' ])->name('users.profile.create');
-        
-Route::post('/{user}/profile',
-        [ UserController::class, 'storeProfile'])->name('users.profile.store');
+Route::get(
+        '/{user}/profile',
+        [UserController::class, 'createProfile']
+)->name('users.profile.create');
+
+Route::post(
+        '/{user}/profile',
+        [UserController::class, 'storeProfile']
+)->name('users.profile.store');
 
 
 // Route::get('/profile', [ProfileController::class, 'index'])

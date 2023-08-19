@@ -27,6 +27,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -65,8 +67,8 @@
     <style>
         html,
         body {
-            background-color: #b8c1ec;
-            color: #232946;
+            background-color: #232946;
+            color: #fffffe;
             font-family: 'Poppins';
         }
 
@@ -187,12 +189,12 @@
 
 <body>
     <section>
-        <h1> New Event </h1>
+        <h1> All Event </h1>
         <!-- Slideshow container -->
         <div class="slideshow-container">
 
             <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
+            <div class="mySlides fade" style="">
                 <div class="numbertext">1 / 3</div>
                 <img src="https://phuketeventcompany.b-cdn.net/wp-content/uploads/2021/06/Expert-Event-Management-Your-Trusted-Event-Planner-and-Organizer-in-Bangkok-1.jpg" style="width:100%">
                 <div class="text">Caption Text</div>
@@ -222,7 +224,36 @@
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
         </div>
+    </section>
 
+    <section>
+        @if($latestEvents)
+        <div class="container">
+            <div class="row title-block justify-content-between flex">
+                <div class="col justify-self-center flex mb-5">
+                    <h4 class="mbr-section-subtitle mbr-fonts-style display-2"><strong>Latest Events</strong></h4>
+                </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3 rounded-t-lg overflow-hidden justify-center">
+                @foreach ($latestEvents as $event)
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
+                    <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2">Event Name : {{ $event->event_name }}</div>
+                        <p class="text-base">
+                            Event Description : {{ $event->description }}
+                        </p>
+                    </div>
+                    <div class="px-6 pt-4 pb-2">
+                        <a href="/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Join</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @else
+        <p>No events available.</p>
+        @endif
     </section>
 
 </body>
