@@ -26,22 +26,34 @@ Route::get('/', function () {
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('event');
 
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 /* The code `Route::middleware('auth')->group(function () { ... })` is creating a group of routes that
-require authentication. This means that the routes inside this group can only be accessed by
-authenticated users. */
+        require authentication. This means that the routes inside this group can only be accessed by
+        authenticated users. */
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-
 Route::resource('/profile', ProfileController::class);
+
+Route::resource('/my_event', EventController::class);
+
+// Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
+
+Route::get('/my_events', [EventController::class, 'index'])
+        ->name('events.index');
+
+
+// Route::get('/{user}/my_event', function () {
+//         return view('event.show-own-event');
+// });
+
+// Route::get('/{user}/my_event', [EventController::class, 'showUserEvents'])->name('user.my_event');
 
 Route::get(
         '/{user}/profile',

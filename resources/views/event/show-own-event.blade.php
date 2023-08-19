@@ -24,9 +24,7 @@
 
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-            @if(Auth::check())
-            @foreach ($events as $event)
-            @if ($event->user_id == Auth::user()->id)
+            @foreach ($ownEvents as $event)
             <!-- CARD 1 -->
             <div class="rounded overflow-hidden shadow-lg flex flex-col">
                 <a href="#"></a>
@@ -37,16 +35,15 @@
                     </a>
                     <a href="#!">
                         <div class="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3 hover:bg-white hover:text-indigo-600 transition duration-500 ease-in-out">
-                            {{$event->category}}
+                            Cooking
                         </div>
                     </a>
                 </div>
                 <div class="px-6 py-4 mb-auto">
-                    <a href="#" class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
-                        {{$event->event_name}}
-                    </a>
+                    <a href="#" class="font-medium text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">Simplest
+                        Salad Recipe ever</a>
                     <p class="text-gray-500 text-sm">
-                        {{$event->description}}
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     </p>
                 </div>
                 <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
@@ -71,9 +68,7 @@
                     </span>
                 </div>
             </div>
-            @endif
             @endforeach
-            @endif
         </div>
 
     </div>

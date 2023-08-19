@@ -236,7 +236,7 @@
             </div>
             <div class="grid grid-cols-3 gap-3 rounded-t-lg overflow-hidden justify-center">
                 @foreach ($latestEvents as $event)
-                <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2" style="background-color: #fffffe; color: #232946">   
                     <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
                     <div class="px-6 py-4">
                         <div class="font-bold text-xl mb-2">Event Name : {{ $event->event_name }}</div>
