@@ -12,6 +12,12 @@
 
 </head>
 
+<style>
+    body {
+        background-color: #0f0e17;
+    }
+</style>
+
 <body>
     <div class="container">
         <div class="bg-white overflow-hidden shadow rounded-lg border">

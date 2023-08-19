@@ -13,14 +13,19 @@ class Event_Role extends Model
 {
     use HasFactory;
 
-    public function User(): BelongsTo
+    protected $table = 'event_roles';
+
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function eventAttendees(): BelongsToMany
+    public function event(): BelongsTo
     {
-        return $this->belongsToMany(EventAttendee::class);
+        return $this->belongsTo(Event::class);
     }
 
+    protected $enum = [
+        'category' => ['Education', 'Music and Festival'],
+    ];
 }

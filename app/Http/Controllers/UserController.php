@@ -82,8 +82,8 @@ class UserController extends Controller
         $profile->profile_picture = 'images/user.png';
         $profile->data_of_birth = $request->get('data_of_birth');
         
-        $user->profile()->save($user);
+        $user->profile()->save($profile); 
 
-        return redirect()->route('login');
+        return redirect()->route('/');
     }
 }

@@ -91,11 +91,10 @@ class EventController extends Controller
         return view('welcome', ['latestEvents' => $latestEvents]);
     }
 
-    public function showUserEvents(User $user)
+    public function ownEvent(Event $event, User $user)
     {
-        $userIdFromRoute = $user->id; // รับค่า user_id จาก URL
-        $ownEvents = Event::where('user_id', $userIdFromRoute)->get();
-
-        return view('event.index', ['ownEvents' => $ownEvents]);
+        if ($user->id == $event->id) {
+            $user->event_roles->roles = 'owner';
+        }
     }
 }

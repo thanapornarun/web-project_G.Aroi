@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Event;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event_Role>
  */
-class EventRoleFactory extends Factory
+class Event_RoleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,12 +17,9 @@ class EventRoleFactory extends Factory
      */
     public function definition(): array
     {
-        $roles = ['staff', 'treasurer', 'event attendee'];
-
         return [
             'user_id' => User::inRandomorder()->first()->id,
-            'event_id' => Event::inRandomorder()->first()->id,
-            'gender' => $this->faker->randomElement($roles),
+            'roles' => 'guest',
         ];
     }
 }

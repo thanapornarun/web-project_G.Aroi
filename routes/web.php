@@ -50,6 +50,16 @@ Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->
 
 Route::resource('/profile', ProfileController::class);
 
+Route::get(
+        '/{user}/createProfile',
+        [UserController::class, 'createProfile']
+)->name('users.profile.create');
+
+Route::post(
+        '/[user}/createProfile',
+        [UserController::class, 'storeProfile']
+)->name('users.profile.store');
+
 Route::resource('/my_event', EventController::class);
 
 // Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
@@ -64,15 +74,6 @@ Route::get('/my_events', [EventController::class, 'index'])
 
 // Route::get('/{user}/my_event', [EventController::class, 'showUserEvents'])->name('user.my_event');
 
-Route::get(
-        '/{user}/profile',
-        [UserController::class, 'createProfile']
-)->name('users.profile.create');
-
-Route::post(
-        '/{user}/profile',
-        [UserController::class, 'storeProfile']
-)->name('users.profile.store');
 
 
 // Route::get('/profile', [ProfileController::class, 'index'])
