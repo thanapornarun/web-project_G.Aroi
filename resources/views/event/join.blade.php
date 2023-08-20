@@ -12,8 +12,14 @@
 
 </head>
 
+<style>
+    body {
+        background-color: #0f0e17;
+    }
+</style>
+
 <body>
-    {{ $event->event_name }}/{{$event->event_place}}
+    <h1> Join </h1>
 </body>
 
 </html>

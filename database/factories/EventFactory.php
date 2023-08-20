@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory as Faker;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
@@ -16,15 +17,19 @@ class EventFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
+    {    
+        $categories = ['Education', 'Music and Festival'];
+
         return [
-            'event_poster_path'=>fake()->name(),
-            'event_name'=> fake()->name(),
-            'event_place'=> fake()->realTextBetween(10,20,5),
-            'attendee_count'=>fake()->numberBetween(50,500),
-            'description'=>fake()->realText(),
-            'start_data'=>fake()->dateTime(),
-            'end_data'=>fake()->dateTime(),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'event_poster_path' => '/images/8084597.jpg',
+            'event_name' => fake()->sentence(),
+            'event_place' => fake()->country(),
+            'attendee_count' => fake()->numberBetween(5, 20),
+            'description' => fake()->sentence(),
+            'start_data' => fake()->dateTime(),
+            'end_data' => fake()->dateTime(),
+            'category' => $this->faker->randomElement($categories),
         ];
     }
 }

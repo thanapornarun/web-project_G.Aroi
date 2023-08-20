@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\EventAttendee;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +14,9 @@ return new class extends Migration
     {
         Schema::create('event_roles', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(EventAttendee::class);
             $table->timestamps();
-            $table->string('role');
+            $table->enum('roles', ['staff', 'treasurer', 'event attendee', 'guest', 'owner'])->default('guest');
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event__roles');
+        Schema::dropIfExists('event_roles');
     }
 };

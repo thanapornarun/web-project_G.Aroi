@@ -26,7 +26,7 @@ class ProfileFactory extends Factory
             'address' =>fake()->address(),
             'phone_number' => fake()->phoneNumber(),
             'profile_picture' => 'images/user.png',
-            'data_of_birth' => fake()->date(),
+            'date_of_birth' => fake()->date(),
         ];
     }
 }

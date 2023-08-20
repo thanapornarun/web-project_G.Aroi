@@ -1,275 +1,80 @@
+@extends('layouts.main')
+
+@section('content')
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Event Manager</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3656/3656949.png">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,600" rel="stylesheet" type="text/css">
-
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        // Next/previous controls
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        // Thumbnail image controls
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-        }
-    </script>
-    <!-- Styles -->
-    <style>
-        html,
-        body {
-            background-color: #b8c1ec;
-            color: #232946;
-            font-family: 'Poppins';
-        }
-
-
-        .navbar-inverse {
-            padding-top: 15px;
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .navbar-brand {
-            padding: 0px;
-            padding-left: 15px;
-        }
-
-        .nav.navbar-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        /* Style for the individual list items */
-        .nav.navbar-nav li {
-            margin: 0 10px;
-            list-style: none;
-        }
-
-        /* Style for the links within the list items */
-        .nav.navbar-nav li a {
-            color: black;
-            text-decoration: none;
-        }
-
-        /* Hover effect for the links */
-        .nav.navbar-nav li a:hover {
-            text-decoration: underline;
-        }
-
-        section h1 {
-            font-weight: bold;
-            padding-left: 50px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 1000px;
-            position: relative;
-            margin: auto;
-        }
-
-        /* Hide the images by default */
-        .mySlides {
-            display: none;
-        }
-
-        /* Next & previous buttons */
-        .prev,
-        .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-
-        /* Position the "next button" to the right */
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
-
-        /* The dots/bullets/indicators */
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .active,
-        .dot:hover {
-            background-color: #717171;
-        }
-
-        /* Fading animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @keyframes fade {
-            from {
-                opacity: .4
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        #rcorners {
-            border-radius: 25px;
-            background: #73AD21;
-            padding: 20px;
-            width: 200px;
-            height: 150px;
-        }
-    </style>
 </head>
 
+<style>
+    body {
+        background-color: #0f0e17;
+    }
+</style>
+
 <body>
-    <nav class="navbar navbar-inverse" style="background-color: #eebbc3; height: 80px">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3656/3656949.png" alt="Logo" style="max-height: 100%; max-width: 100%;">
-                </a>
+    <div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+
+        <div class="border-b mb-5 flex justify-between text-sm">
+            <div class="flex items-center pb-2 pr-2 border-b-2 uppercase" style="color: #fffffe; border-color: #fffffe;">
+                My Event
             </div>
-            <ul class="nav navbar-nav">
-                <li style="padding: 0px;"><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="#"><i class="fa-regular fa-calendar-plus"></i> Event Create</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ route('welcome') }}"><i class="fa-solid fa-user"></i> Logout</a></li>
-            </ul>
+            <a href="/" class="flex items-center pb-2 pr-2 border-b-2 uppercase" style="color: #fffffe; border-color: #fffffe;">
+                See All
+            </a>
         </div>
-    </nav>
 
-    <section>
-        <h1> New Event </h1>
-        <!-- Slideshow container -->
-        <div class="slideshow-container">
 
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
-                <img src="https://phuketeventcompany.b-cdn.net/wp-content/uploads/2021/06/Expert-Event-Management-Your-Trusted-Event-Planner-and-Organizer-in-Bangkok-1.jpg" style="width:100%">
-                <div class="text">Caption Text</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+            @if(Auth::check())
+            @php
+            $user = Auth::user();
+            $profile = $user->profile;
+            @endphp
+            @foreach ($events as $event)
+            @if ($event->user_id == Auth::user()->id)
+            <!-- CARD 1 -->
+            <div class="rounded overflow-hidden shadow-lg flex flex-col bg-white">
+                <div class="relative">
+                    <img class="w-full" src="{{$event->event_poster_path}}" alt="">
+                    <div class="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3">
+                        {{$event->category}}
+                    </div>
+                </div>
+                <div class="px-6 py-4 mb-auto">
+                    <h1 class="font-medium text-lg inline-block inline-block mb-2 mt-2">
+                        {{$event->event_name}}
+                    </h1>
+                    <p class="text-gray-500 text-sm">
+                        {{$event->description}}
+                    </p>
+                    <a class="inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="/" style="background-color: #eebbc3; color: #232946;">
+                        Team
+                    </a>
+
+                    <a class="ml-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="/" style="background-color: #eebbc3; color: #232946;">
+                        Budget
+                    </a>
+                </div>
+                <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
+                    <span href="#" class="py-1 text-lg font-regular text-gray-900 mr-1 flex flex-row items-center">
+                        <span class="ml-1">Owner : {{ $profile->full_name }}</span>
+                    </span>
+                </div>
             </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <img src="https://jandevents.com/wp-content/uploads/jand-party.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
-                <img src="https://www.adobe.com/content/dam/www/us/en/events/overview-page/eventshub_evergreen_opengraph_1200x630_2x.jpg" style="width:100%">
-                <div class="text">Caption Three</div>
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            @endif
+            @endforeach
+            @endif
         </div>
-        <br>
 
-        <!-- The dots/circles -->
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-        
-    </section>
-
+    </div>
 </body>
 
 </html>
+@endsection

@@ -1,8 +1,12 @@
 <?php
 
+use App\Models\Event;
+use App\Models\EventAttendee;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 
 return new class extends Migration
 {
@@ -14,6 +18,7 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignIdFor(User::class);
             $table->string('event_poster_path');
             $table->string('event_name');
             $table->string('event_place');
@@ -21,6 +26,7 @@ return new class extends Migration
             $table->string('description');
             $table->datetime('start_data');
             $table->datetime('end_data');
+            $table->enum('category', ['Education', 'Music and Festival']);
         });
     }
 

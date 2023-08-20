@@ -14,8 +14,8 @@ class BudgetController extends Controller
      */
     public function index(Budget $budget)
     {
-        
-        return view('budget.index',['budget'=> $budget]);
+
+        return view('budget.index', ['budget' => $budget]);
     }
 
     /**
@@ -23,20 +23,20 @@ class BudgetController extends Controller
      */
     public function create(Event $event)
     {
-        return view('budget.create',['event' => $event]);
+        return view('budget.create', ['event' => $event]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request,Event $event)
+    public function store(Request $request, Event $event)
     {
 
-        $request->validate(['budget' => ['required','decimal']]);
+        $request->validate(['budget' => ['required', 'decimal']]);
 
         $budget = new Event();
         $budget->budget = $request->get('budget');
-        $budget->evet_id = $event->id;
+        $budget->event_id = $event->id;
         $budget->balance = 0;
         $budget->save();
         return redirect()->route('budget.index');
@@ -47,7 +47,7 @@ class BudgetController extends Controller
      */
     public function showBudget(Budget $budget)
     {
-        return view('budget.index',['budget' => $budget]);
+        return view('budget.index', ['budget' => $budget]);
     }
 
     /**
@@ -55,7 +55,7 @@ class BudgetController extends Controller
      */
     public function edit(Budget $budget)
     {
-        return view('budget.edit',['budget'=>$budget]);
+        return view('budget.edit', ['budget' => $budget]);
     }
 
     /**
@@ -63,10 +63,9 @@ class BudgetController extends Controller
      */
     public function update(Request $request, Budget $budget)
     {
-        $budgets->budget = $request->get('budget');
-        $budgets->save();
-
-        return redirect()->rount('budget.index',['budget'=>$budget]);
+        $budget->budget = $request->get('budget');
+        $budget->save();
+        return redirect()->route('budget.index', ['budget' => $budget]);
     }
 
     /**
@@ -80,19 +79,19 @@ class BudgetController extends Controller
     // Expense //
     public function createExpense(Budget $budget)
     {
-        return rount('budget.create-expense',['budget'=>$budget]);
+        return route('budget.create-expense', ['budget' => $budget]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeExpense(Request $request,Budget $budget)
+    public function storeExpense(Request $request, Budget $budget)
     {
         $expense_name =  $request->get('bill_name');
-        $request->validate(['bill_name' => ['required','string','min:3','max:255']]);
+        $request->validate(['bill_name' => ['required', 'string', 'min:3', 'max:255']]);
 
         $expense_amount = $request->get('amount');
-        $request->validate(['amount' => ['required','string','min:3','max:255']]);
+        $request->validate(['amount' => ['required', 'string', 'min:3', 'max:255']]);
 
         $expense = new Expense();
         $expense->bill_name = $expense_name;
@@ -100,9 +99,9 @@ class BudgetController extends Controller
         $expense->amount = $request->get('amount');
         $expense->description = $request->get('description');
         $expense->expense_date = $request->get('date');
-       
+
         $budget->expenses()->save($expense);
-        return redirect()->route('budget.index',['budget'=>$budget]);
+        return redirect()->route('budget.index', ['budget' => $budget]);
     }
 
 
@@ -111,28 +110,26 @@ class BudgetController extends Controller
      */
     public function showExpense(Expense $expense)
     {
-        return rount('budget.expense-index',['expense'=>$expense]);
+        return route('budget.expense-index', ['expense' => $expense]);
     }
-        /**
+    /**
      * Update the specified resource in storage.
      */
     public function updateBalance(Request $request, Budget $budget)
     {
-        $budgets->balance = ($budget->balance)-($request->get('amount'));
-        $budgets->save();
+        $budget->balance = ($budget->balance) - ($request->get('amount'));
+        $budget->save();
 
-        return redirect()->rount('budget.index',['budget'=>$budget]);
+        return redirect()->rount('budget.index', ['budget' => $budget]);
     }
 
-        /**
+    /**
      * Remove the specified resource from storage.
      */
-    public function destroyExpense(Expense $expense,Budget $budget)
+    public function destroyExpense(Expense $expense, Budget $budget)
     {
         $expense->delete();
 
-        return redirect()->rount('budget.index',['budget'=>$budget]);
+        return redirect()->route('budget.index', ['budget' => $budget]);
     }
-
-
 }

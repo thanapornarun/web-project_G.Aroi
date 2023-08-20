@@ -4,7 +4,6 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -52,12 +51,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
-
-    public function event_Role(): HasOne
-    {
-        return $this->hasOne(Event_Role::class);
-    }
-
+    
     public function eventAttendees(): HasMany
     {
         return $this->hasMany(EventAttendee::class);
@@ -68,8 +62,13 @@ class User extends Authenticatable
         return $this->HasMany(Event::class, 'event_attendees');
     }
 
-    public function tasks(): HasMany
+    // public function tasks(): HasMany
+    // {
+    //     return $this->hasMany(Task::class);
+    // }
+
+    public function events(): HasMany
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Event::class);
     }
 }

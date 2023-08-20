@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -24,7 +25,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        return view('profile.create-profile');
     }
 
     /**
@@ -32,7 +33,21 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $profile_name = $request->get('full_name'); 
+        if ($profile_name == null) {
+            return redirect()->back();
+        }
+
+        $profile = new Profile();
+        $profile->full_name = $request->get('full_name');
+        $profile->gender = $request->get('gender');
+        $profile->address = $request->get('address');
+        $profile->phone_number = $request->get('phone_number');
+        $profile->profile_picture = $request->get('profile_picture');
+        $profile->data_of_birth = $request->get('data_of_birth');
+
+        $profile->save();
+        return redirect()->route('login');
     }
 
     /**
@@ -67,5 +82,14 @@ class ProfileController extends Controller
         //
     }
 
+    public function uploadProfilePicture(Request $request, Profile $profile)
+    {
 
+        $request->validate([
+            'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Add any relevant validation rules
+        ]);
+
+        $profile->profile_picture = $request->get('profile_picture');
+        $profile->save();
+    }
 }

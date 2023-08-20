@@ -17,12 +17,10 @@ class BudgetFactory extends Factory
      */
     public function definition(): array
     {
-        $eventTotal = Event::count();
-
         return [
-            'event_id'=>fake()->numberBetween(1,$eventTotal),
-            'budget'=>fake()->numberBetween(200000,500000),
-            'balance'=> 0,
+            'event_id' => Event::inRandomorder()->first()->id,
+            'budget' => fake()->numberBetween(200000, 500000),
+            'balance' => 0,
         ];
     }
 }

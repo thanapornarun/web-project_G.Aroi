@@ -17,9 +17,8 @@ class ExpenseFactory extends Factory
      */
     public function definition(): array
     {
-        $budgetTotal = Budget::count();
         return [
-            'budget_id'=>fake()->numberBetween(1,$budgetTotal),
+            'budget_id' => Budget::inRandomorder()->first()->id,
             'bill_name'=>fake()->name(),
             'bill_path'=>fake()->name(),
             'description'=>fake()->realText(),
