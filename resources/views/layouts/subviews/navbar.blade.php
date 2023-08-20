@@ -71,7 +71,7 @@
                             </form>
                         </ul>
                     </div>
-                    @else
+                    @elseฆ
                     <li>
                         <a href="{{ route('register') }}">
                             <i class="fa-solid fa-user"></i> Register
