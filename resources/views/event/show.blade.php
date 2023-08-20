@@ -74,12 +74,14 @@
                 <p>
                 {{ $event->start_date }} / {{ $event->end_date }}
                 </p>
+                @if($showbtn)
                 <form action="{{ route('joinEvent', ['event' => $event ]) }}" method="POST">
                     @csrf
                     <button type="submit" class="mt-15 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg" style="margin-left: -7px;">
                         Join
                     </button>
                 </form>
+                @endif
             </div>
         </div>
     </div>

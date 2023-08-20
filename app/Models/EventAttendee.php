@@ -20,6 +20,8 @@ class EventAttendee extends Model
         'status',        
     ];
 
+    protected  $table = 'event_attendees';
+
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
@@ -30,7 +32,7 @@ class EventAttendee extends Model
         return $this->belongsTo(Event::class);
     }
 
-    public function eventRoles(): BelongsToMany
+    public function eventRole(): BelongsToMany
     {
         return $this->belongsToMany(EventRole::class);
     }

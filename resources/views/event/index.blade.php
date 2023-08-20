@@ -54,7 +54,7 @@
                     <p class="text-gray-500 text-sm">
                         {{$event->description}}
                     </p>
-                    <a class="inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="/" style="background-color: #eebbc3; color: #232946;">
+                    <a class="inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href=" {{ route('eventManager', [ 'event' => $event ]) }}" style="background-color: #eebbc3; color: #232946;">
                         Team
                     </a>
 

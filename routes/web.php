@@ -25,9 +25,16 @@ Route::get('/', function () {
         return view('welcome');
 });
 
+Route::resource('/profile', ProfileController::class);
+
+// Route::get('/events', [EventController::class, 'index'])
+//         ->name('events.index');
+
 // Route::resource('/event', Event::class);
 
 Route::resource('/event', EventController::class);
+
+// Route::resource('/event', EventController::class);
 
 // Route::post('/event/{event}', [EventController::class, 'userJoinEvent'])->name('join.event');
 
@@ -37,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
+Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->name('eventManager');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -59,10 +67,6 @@ Route::get('/{event}/budget/create',[BudgetController::class,'createExpense'])->
 
 Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->name('budget.expense.store');
 
-Route::resource('/profile', ProfileController::class);
-
-Route::get('/events', [EventController::class, 'index'])
-        ->name('events.index');
 
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
