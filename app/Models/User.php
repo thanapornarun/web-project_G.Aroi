@@ -52,9 +52,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
     
-    public function eventRole(): HasOne
+    public function eventAttendees(): HasMany
     {
-        return $this->hasOne(Event_Role::class);
+        return $this->hasMany(EventAttendee::class);
     }
 
     public function certificate(): HasMany
@@ -62,10 +62,10 @@ class User extends Authenticatable
         return $this->HasMany(Event::class, 'event_attendees');
     }
 
-    public function tasks(): HasMany
-    {
-        return $this->hasMany(Task::class);
-    }
+    // public function tasks(): HasMany
+    // {
+    //     return $this->hasMany(Task::class);
+    // }
 
     public function events(): HasMany
     {

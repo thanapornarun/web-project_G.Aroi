@@ -10,7 +10,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    public function User(): BelongsTo
+    public function EventAttendee(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -69,7 +69,7 @@ class UserController extends Controller
     }
 
     public function createProfile(User $user) {
-        return view('users.create-profile', ['user' => $user]);
+        return view('profile.create-profile', ['user' => $user]);
     }
     
     
@@ -80,7 +80,7 @@ class UserController extends Controller
         $profile->address = $request->get('address');
         $profile->phone_number = $request->get('phone_number');
         $profile->profile_picture = 'images/user.png';
-        $profile->data_of_birth = $request->get('data_of_birth');
+        $profile->date_of_birth = $request->get('date_of_birth');
         
         $user->profile()->save($profile); 
 

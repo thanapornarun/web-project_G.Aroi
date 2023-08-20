@@ -5,19 +5,40 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class EventAttendee extends Model
 {
     use HasFactory;
 
-    public function event(): belongsTo
+    public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }
 
-    public function eventRole(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(EventRole::class);
+        return $this->belongsTo(Event::class);
+    }
+
+    public function eventRoles(): BelongsToMany
+    {
+        return $this->belongsToMany(EventRole::class);
+    }
+
+    public function tasks(): HasMany
+    {
+        return $this->hasMany(EventRole::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($eventAttendee) {
+            $eventAttendee->status = 'not pass';
+        });
     }
 }

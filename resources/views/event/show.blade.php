@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+    {{ $event->event_name }}/{{$event->event_place}}
 </body>
 
 </html>

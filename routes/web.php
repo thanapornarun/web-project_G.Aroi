@@ -25,7 +25,12 @@ Route::get('/', function () {
         return view('welcome');
 });
 
-Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('event');
+// Route::resource('/event', Event::class);
+
+Route::resource('/my_event', EventController::class);
+
+Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -50,17 +55,6 @@ Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->
 
 Route::resource('/profile', ProfileController::class);
 
-Route::get(
-        '/{user}/createProfile',
-        [UserController::class, 'createProfile']
-)->name('users.profile.create');
-
-Route::post(
-        '/[user}/createProfile',
-        [UserController::class, 'storeProfile']
-)->name('users.profile.store');
-
-Route::resource('/my_event', EventController::class);
 
 // Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 

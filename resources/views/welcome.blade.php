@@ -236,15 +236,14 @@
             <div class="grid grid-cols-3 gap-3 rounded-t-lg overflow-hidden justify-center">
                 @foreach ($latestEvents as $event)
                 <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">   
-                    <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
+                    <a href="/my_event/{{$event->id}}/">
+                        <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
+                    </a>
                     <div class="px-6 py-4">
                         <div class="font-extrabold text-2xl mb-2">Event Name : {{ $event->event_name }}</div>
                         <p class="text-base font-bold">
                             Event Description : {{ $event->description }}
                         </p>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                        <a href="/" class="inline-block bg-gray-200 rounded-full px-3 py-1 text-lg font-semibold text-gray-700 mr-2 mb-2">Join</a>
                     </div>
                 </div>
                 @endforeach

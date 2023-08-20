@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Event::class);
             $table->foreignIdFor(Event_Role::class);
             $table->timestamps();
-            $table->string('status');
+            $table->enum('status', ['pass', 'not pass'])->default('not pass');
         });
     }
 

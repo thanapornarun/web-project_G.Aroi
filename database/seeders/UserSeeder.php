@@ -21,7 +21,6 @@ class UserSeeder extends Seeder
         User::factory(5)
             ->hasProfile(1)
             ->hasEvents(2)
-            ->hasEventRole(1)
             ->create()
             ->each(function ($user) {
                 $user->events->each(function ($event) {
@@ -31,7 +30,7 @@ class UserSeeder extends Seeder
                         ])
                             ->each(function ($budget) {
                                 $budget->expenses()->saveMany(Expense::factory(5)->create([
-                                    'budget_id' => $budget->id,
+                                    'budget_id' => $budget->id, 
                                 ]));
                             })
                     );

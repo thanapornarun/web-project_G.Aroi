@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Event;
+use App\Models\EventAttendee;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,7 +20,7 @@ class Event_RoleFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::inRandomorder()->first()->id,
+            'eventAttendee_id' => EventAttendee::inRandomorder()->first()->id,
             'roles' => 'guest',
         ];
     }

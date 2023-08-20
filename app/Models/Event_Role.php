@@ -4,9 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class Event_Role extends Model
@@ -15,17 +13,23 @@ class Event_Role extends Model
 
     protected $table = 'event_roles';
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = ['roles'];
 
-    public function event(): BelongsTo
+    public function eventAttendees(): BelongsToMany
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsToMany(EventAttendee::class);
     }
 
     protected $enum = [
         'category' => ['Education', 'Music and Festival'],
     ];
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::creating(function ($eventRole) {
+    //         $eventRole->roles = 'guest';
+    //     });
+    // }
 }

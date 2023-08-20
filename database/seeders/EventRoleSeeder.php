@@ -14,6 +14,7 @@ class EventRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Event_Role::factory(5)->create();
+        Event_Role::factory(5)
+            ->create();
     }
 }

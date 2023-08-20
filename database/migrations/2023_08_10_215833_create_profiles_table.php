@@ -18,10 +18,10 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->string('full_name');
             $table->enum('gender', ['female', 'male', 'not specified'])->default('not specified');
-            $table->string('address');
-            $table->string('phone_number');
+            $table->string('address')->default('enter your address');
+            $table->string('phone_number')->default('000-000-0000');
             $table->string('profile_picture')->default('/images/user.png');
-            $table->date('data_of_birth');
+            $table->date('date_of_birth')->nullable();
         });
     }
 
