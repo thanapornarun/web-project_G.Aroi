@@ -27,8 +27,8 @@ class EventFactory extends Factory
             'event_place' => fake()->country(),
             'attendee_count' => fake()->numberBetween(5, 20),
             'description' => fake()->sentence(),
-            'start_data' => fake()->dateTime(),
-            'end_data' => fake()->dateTime(),
+            'start_date' => fake()->dateTime(),
+            'end_date' => fake()->dateTime(),
             'category' => $this->faker->randomElement($categories),
         ];
     }

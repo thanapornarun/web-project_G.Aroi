@@ -193,7 +193,7 @@
         <div class="slideshow-container">
 
             <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade" style="">
+            <div class="mySlides fade">
                 <div class="numbertext">1 / 3</div>
                 <img src="https://phuketeventcompany.b-cdn.net/wp-content/uploads/2021/06/Expert-Event-Management-Your-Trusted-Event-Planner-and-Organizer-in-Bangkok-1.jpg" style="width:100%">
                 <div class="text">Caption Text</div>
@@ -236,7 +236,7 @@
             <div class="grid grid-cols-3 gap-3 rounded-t-lg overflow-hidden justify-center">
                 @foreach ($latestEvents as $event)
                 <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">   
-                    <a href="/my_event/{{$event->id}}/">
+                    <a href="/event/{{$event->id}}/">
                         <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
                     </a>
                     <div class="px-6 py-4">

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Event::class);
-            $table->foreignIdFor(Event_Role::class);
+            $table->foreignIdFor(Event_Role::class)->constrained();
             $table->timestamps();
             $table->enum('status', ['pass', 'not pass'])->default('not pass');
         });

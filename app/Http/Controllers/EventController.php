@@ -42,8 +42,8 @@ class EventController extends Controller {
         $event->event_place = $request->get( 'place' );
         $event->attendee_count = $request->get( 'attendee' );
         $event->description = $request->get( 'description' );
-        $event->start_data = $request->get( 'start' );
-        $event->end_data = $request->get( 'end_data' );
+        $event->start_date = $request->get( 'start' );
+        $event->end_date = $request->get( 'end_date' );
         $event->save();
         return redirect()->route( 'event.index' );
     }
@@ -54,7 +54,7 @@ class EventController extends Controller {
 
     public function show( $id ) {
         $event = Event::find($id);
-        return view( 'event.show', [ 'event' => $event] );
+        return view( 'event.show', [ 'event' => $event ] );
     }
 
     /**
@@ -89,29 +89,43 @@ class EventController extends Controller {
 
     public function showWelcomeWithLatestEvent() {
         $latestEvents = Event::latest()->take( 6 )->get();
-        ;
         return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
     }
 
-    public function joinEvent() {
-        $latestEvents = Event::latest()->take( 6 )->get();
-        ;
-        return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
-    }
+    // public function joinEvent() {
+    //     $latestEvents = Event::latest()->take( 6 )->get();
+    //     return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
+    // }
 
-    public function userJoinEvent(User $user, Event $event ) {
-        $event_role = Event_Role::create( [
-            'user_id' => $user->id
-        ] );
+    public function userJoinEvent(Request $request, Event $event) {
+        $user = auth()->user();
 
-        $eventAttendee = EventAttendee::create( [
+        // dd ($event);
+        // dd ($user);
+
+        $event_role = new Event_Role();
+
+        $eventAttendee = $event->eventAttendees()->create([
             'user_id' => $user->id,
             'event_id' => $event->id,
-            'event_role_id' => $event_role->id,
-        ] );
+            // 'event_role_id' => $event_role->id,
+        ]);
+        
+        $event_role->eventAttendee()->associate($eventAttendee);
+        $event_role->save();
 
-        $event->eventAttendees_id = $eventAttendee;
+        // $user = User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
 
-        return redirect()->route( '/' );
+
+        // $profile = $user->profile()->create([
+        //     'user_id' => $user->id,
+        //     'full_name' => $user->name,
+        // ]);
+
+        return redirect()->back()->with('success', 'Joined the event successfully.');
     }
 }

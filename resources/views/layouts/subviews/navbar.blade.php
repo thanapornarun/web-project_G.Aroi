@@ -86,7 +86,7 @@
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li><a href="/profile" style="font-weight: 600" >My Profile</a></li>
-                            <li><a href="/my_event" style="font-weight: 600">My Event</a></li>
+                            <li><a href="/event" style="font-weight: 600">My Event</a></li>
                             <li><a href="#" style="font-weight: 600"><i class="fa-regular fa-calendar-plus" style="padding-right: 5px;"></i> Crete Event</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">

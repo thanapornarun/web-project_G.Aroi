@@ -27,7 +27,13 @@ Route::get('/', function () {
 
 // Route::resource('/event', Event::class);
 
-Route::resource('/my_event', EventController::class);
+Route::resource('/event', EventController::class);
+
+// Route::post('/event/{event}', [EventController::class, 'userJoinEvent'])->name('join.event');
+
+Route::middleware(['auth'])->group(function () {
+        Route::post('/event/{event}/join', [EventController::class, 'userJoinEvent'])->name('joinEvent');
+    });
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
@@ -55,18 +61,18 @@ Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->
 
 Route::resource('/profile', ProfileController::class);
 
-
-// Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
-
-Route::get('/my_events', [EventController::class, 'index'])
+Route::get('/events', [EventController::class, 'index'])
         ->name('events.index');
 
+// Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
-// Route::get('/{user}/my_event', function () {
+
+
+// Route::get('/{user}/event', function () {
 //         return view('event.show-own-event');
 // });
 
-// Route::get('/{user}/my_event', [EventController::class, 'showUserEvents'])->name('user.my_event');
+// Route::get('/{user}/event', [EventController::class, 'showUserEvents'])->name('user.event');
 
 
 

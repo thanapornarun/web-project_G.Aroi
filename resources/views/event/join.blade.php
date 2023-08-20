@@ -19,7 +19,7 @@
 </style>
 
 <body>
-    <h1> Join </h1>
+    HI
 </body>
 
 </html>

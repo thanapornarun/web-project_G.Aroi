@@ -13,6 +13,13 @@ class EventAttendee extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'event_id',
+        'event_role_id',
+        'status',        
+    ];
+
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
