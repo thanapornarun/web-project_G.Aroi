@@ -85,22 +85,8 @@ Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'sto
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
 
-<<<<<<< HEAD
-
-
-
-
-// Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
-
-// Route::get('/my_events', [EventController::class, 'index'])
-//         ->name('events.index');
-
-
-// Route::get('/{user}/my_event', function () {
-=======
 
 // Route::get('/{user}/event', function () {
->>>>>>> origin/wk
 //         return view('event.show-own-event');
 // });
 
