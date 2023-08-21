@@ -96,7 +96,7 @@
                             </li>
                         </ul>
                     </div>
-                    @elseฆ
+                    @else
                     <li>
                         <a href="{{ route('register') }}" style="color: #fffffe;" class="navbar-brand">
                             <i class="fa-solid fa-user"></i> Register

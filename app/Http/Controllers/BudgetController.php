@@ -12,10 +12,9 @@ class BudgetController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Budget $budget)
+    public function index(Event $event)
     {
-
-        return view('budget.index', ['budget' => $budget]);
+        return view('budget.index', ['event' => $event]);
     }
 
     /**
@@ -45,9 +44,9 @@ class BudgetController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showBudget(Budget $budget)
+    public function show(Event $event,Budget $budget,Expense $expense)
     {
-        return view('budget.index', ['budget' => $budget]);
+        //return $this->showExpense($event,$budget,$expense);
     }
 
     /**
@@ -77,41 +76,47 @@ class BudgetController extends Controller
     }
 
     // Expense //
-    public function createExpense(Budget $budget)
+    public function createExpense(Event $event,Budget $budget)
     {
-        return route('budget.create-expense', ['budget' => $budget]);
+        return view('budget.create-expense', ['event'=>$event,'budget' => $budget]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeExpense(Request $request, Budget $budget)
+    public function storeExpense(Request $request,Event $event,Budget $budget)
     {
         $expense_name =  $request->get('bill_name');
         $request->validate(['bill_name' => ['required', 'string', 'min:3', 'max:255']]);
 
         $expense_amount = $request->get('amount');
-        $request->validate(['amount' => ['required', 'string', 'min:3', 'max:255']]);
+        $request->validate(['amount' => ['required', 'integer', 'min:5000']]);
+
+        $expense_description =  $request->get('description');
+        $request->validate(['description' => ['required', 'string', 'min:3', 'max:255']]);
+
 
         $expense = new Expense();
         $expense->bill_name = $expense_name;
-        $expense->bill_path = $request->get('bill_path');
-        $expense->amount = $request->get('amount');
-        $expense->description = $request->get('description');
+        $expense->amount = $expense_amount;
+        $expense->budget_id = $budget->id;
+        $expense->description = $expense_description;
         $expense->expense_date = $request->get('date');
-
-        $budget->expenses()->save($expense);
-        return redirect()->route('budget.index', ['budget' => $budget]);
+        $expense->bill_path = $request->get('bill_path');
+        $expense->save();
+        return redirect()->route('budget.index', ['event'=>$event]);
     }
 
 
     /**
      * Display the specified resource.
      */
-    public function showExpense(Expense $expense)
+    public function showExpense(Event $event,Budget $budget,Expense $expense)
     {
-        return route('budget.expense-index', ['expense' => $expense]);
+        
+        return view('budget.show-expense', ['event'=>$event,'budget'=>$budget,'expense'=>$expense]);
     }
+
     /**
      * Update the specified resource in storage.
      */

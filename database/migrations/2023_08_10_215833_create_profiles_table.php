@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address')->default('enter your address');
             $table->string('phone_number')->default('000-000-0000');
             $table->string('profile_picture')->default('/images/user.png');
-            $table->date('date_of_birth')->nullable();
+            $table->date('date_of_birth');
         });
     }
 
