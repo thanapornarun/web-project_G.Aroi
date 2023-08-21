@@ -16,18 +16,18 @@ class EventAttendeeController extends Controller
     {
         $user = auth()->user();
 
-        $user = User::with(['eventAttendees.event'])->where('id',$user->id)->first();
-        // $eventAttendee = EventAttendee::get();
+        $userId = $user->id;
 
-        $EventAttendees = EventAttendee::with(['event'])->get();
-        
-        // dd($EventAttendees[0]->event);
+        // $user = User::with(['eventAttendees.event'])->where('id',$user->id)->first();
 
+        $eventAttendees = EventAttendee::with(['user'])->where('user_id', $userId)->get();
+
+        // $event = Event::where('event_id', $eventAttendees->event_id)->get();
+        // $eventJoined = Event::with(['eventAttendees.user'])->where('id', $eventAttendee->event_id)->get();
         // $event = $EventAttendee->event;
         // dd($event->id);
         
-        // $eventJoined = Event::with(['eventAttendees.user'])->where('id', $eventAttendee->event_id)->get();
-        return view('eventAttendee.index', ['user' => $user, 'eventAttendees' => $EventAttendees ]);
+        return view('eventAttendee.index', ['user' => $user, 'eventAttendees' => $eventAttendees ]);
     }
 
     /**
@@ -81,18 +81,19 @@ class EventAttendeeController extends Controller
     public function eventJoinedShow()
     {
         $user = auth()->user();
-        $eventAttendees = EventAttendee::get();
-        // $event = Event::get();
+
+        // $eventAttendees = EventAttendee::get();
 
         $eventAttendeeJoined = EventAttendee::where('user_id', $user->id)->get();
+
         foreach ($eventAttendeeJoined as $eventAttendee) {
             $eventId = $eventAttendee->event_id;
         }
         
-        $eventJoined = Event::where('event_id', $eventAttendee->event_id)->get();
+        // $event = Event::find($eventId);
+        
+        $event = Event::where('event_id', $eventAttendee->event_id)->get();
 
-        dd($eventJoined);
-        $event = Event::find($eventId);
 
         return view('eventAttendee.joined-event-show', ['event' => $event]);
     }

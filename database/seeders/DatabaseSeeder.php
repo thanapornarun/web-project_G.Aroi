@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
 
+<<<<<<<<< Temporary merge branch 1
+
+
+        $this->call(EventRoleSeeder::class);
+=========
         // $this->call(EventRoleSeeder::class);
 
         // $this->call(EventSeeder::class);
@@ -31,8 +36,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
-
-        $this->call(EventRoleSeeder::class);
+>>>>>>>>> Temporary merge branch 2
     }
 }

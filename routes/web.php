@@ -29,6 +29,10 @@ Route::get('/', function () {
 
 Route::resource('/profile', ProfileController::class);
 
+Route::get('/profile/{profile}/editProfile', [ProfileController::class, 'editProfile'])->name('editProfile');
+
+Route::post('/profile/{profile}/editProfile', [ProfileController::class, 'updateProfile'])->name('updateProfile');
+
 // Route::get('/events', [EventController::class, 'index'])
 //         ->name('events.index');
 
@@ -36,8 +40,11 @@ Route::resource('/profile', ProfileController::class);
 
 Route::resource('/event', EventController::class);
 
-Route::resource('/eventAttendee', EventAttendeeController::class);        
+<<<<<<<<< Temporary merge branch 1
 //Route::resource('/create_event', EventController::class);
+=========
+Route::resource('/eventAttendee', EventAttendeeController::class);        
+>>>>>>>>> Temporary merge branch 2
 
 // Route::resource('/event', EventController::class);
 
@@ -49,9 +56,17 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
+// Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
+
 Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->name('eventManager');
 
 Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager'])->name('setEventRoleManager');
+
+Route::get('/event/{event}/setStatus', [EventController::class, 'setStatus'])->name('setStatusManager');
+
+Route::post('/event/{event}/setStatus', [EventController::class, 'setEventAttendeeStatus'])->name('setStatusAttendeeManager');
+
+// Route::post('/event/{event}/manager', [EventAttendeeController::class, 'setStatus'])->name('setStatusManager');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -65,6 +80,7 @@ Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager']
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+// Route::get('/profile', [ProfileController::class,'index'])->name('budget.index');
 
 Route::resource('/event/{event}/budget',BudgetController::class);
 
@@ -86,6 +102,13 @@ Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'sto
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
 
+<<<<<<<<< Temporary merge branch 1
+
+
+
+// Route::get('/{user}/event', function () {
+
+=========
 
 // Route::get('/{user}/event', function () {
 //         return view('event.show-own-event');

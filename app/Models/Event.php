@@ -27,9 +27,9 @@ class Event extends Model
         return $this->hasMany(Budget::class);
     }    
     
-    public function owner()
+    public function user() : BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     protected $enum = [
