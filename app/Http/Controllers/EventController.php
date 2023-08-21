@@ -124,22 +124,27 @@ class EventController extends Controller {
             ]);
         }
 
-        // return redirect()->back()->with('success', 'Joined the event successfully.');
         return view('event.join');
     }
 
     public function teamManager(Event $event) {
         $users = User::get();
-        return view('event.team-manager', ['event' => $event, 'users' => $users]);
+        $eventRoles = EventRole::get();
+        $eventAttendees = EventAttendee::get();
+        return view('event.team-manager', ['event' => $event, 'users' => $users, 'eventRoles' => $eventRoles, 'eventAttendees' => $eventAttendees]);
     }
 
     public function setTeamManager(Request $request, Event $event) {
-        // $eventAttendee = $event->eventAttendees()->create([
-        //     'user_id' => $user->id,
-        //     'event_id' => $event->id,
-        //     'event_role_id' => EventRole::first()->id,
-        // ]);
-    }
+        $eventAttendee = $event->eventAttendees()->create([
+            'user_id' => $request->get('userId'),
+            'event_id' => $event->id,
+            'event_role_id' => $request->get('eventRoleId'),
+        ]);
 
+        $eventAttendee->status = 'pass';
+        $eventAttendee->save();
+
+        return redirect()->route('event.index', ['event' => $event]);
+    }
 
 }

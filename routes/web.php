@@ -46,6 +46,8 @@ Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('s
 
 Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->name('eventManager');
 
+Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager'])->name('setEventRoleManager');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
