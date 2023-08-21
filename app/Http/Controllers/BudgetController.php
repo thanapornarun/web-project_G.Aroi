@@ -42,7 +42,7 @@ class BudgetController extends Controller
         $budget->event_id = $event->id;
         $budget->balance = $request->get('budget');
         $budget->save();
-        return redirect()->route('budget.index');
+        return redirect()->route('budget.index',['event'=>$event]);
     }
 
     /**

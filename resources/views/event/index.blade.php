@@ -31,6 +31,10 @@
         </div>
 
 
+    
+
+
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
             @if(Auth::check())
             @php
@@ -43,6 +47,7 @@
             <div class="rounded overflow-hidden shadow-lg flex flex-col bg-white">
                 <div class="relative">
                     <img class="w-full" src="{{$event->event_poster_path}}" alt="">
+                    <img src="{{ asset('storage/app/public/event_images' . $event->event_poster_path) }}">
                     <div class="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3">
                         {{$event->category}}
                     </div>
