@@ -4,8 +4,10 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\EventAttendeeController;
 use App\Http\Controllers\UserController;
 use App\Models\Event;
+use App\Models\EventAttendee;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +36,8 @@ Route::resource('/profile', ProfileController::class);
 
 Route::resource('/event', EventController::class);
 
+Route::resource('/eventAttendee', EventAttendeeController::class);        
+
 // Route::resource('/event', EventController::class);
 
 // Route::post('/event/{event}', [EventController::class, 'userJoinEvent'])->name('join.event');
@@ -47,6 +51,8 @@ Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('s
 Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->name('eventManager');
 
 Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager'])->name('setEventRoleManager');
+
+// Route::get('/event/{eventAttendee}/joinedEvent', [EventAttendeeController::class, 'eventJoinedShow'])->name('show.joinedEvent');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
