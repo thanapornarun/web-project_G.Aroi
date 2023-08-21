@@ -19,51 +19,21 @@
 </style>
 
 <body>
-    <div class="container">
-        <div class="bg-white overflow-hidden shadow rounded-lg border">
-            <div class="px-4 py-5 sm:px-6">
-                <h3 class="leading-6 font-bold text-gray-900">
-                    User Profile
-                </h3>
-                <p class="mt-6 max-w-2xl text-medium font-semibold text-gray-500">
-                    This is your profile page.
-                </p>
-            </div>
-            <div class="border-t border-gray-200 sm:p-0" style="padding: 60px;">
-                <img class="object-center" src="{{ $event->event_poster_path}} " alt="" style="height: 600px; width: 600px;"> </img>
-                <h1 class="text-4xl">
-                    Event Name:
-                </h1>
-                <p class="text-xl">
-                    {{ $event->event_name }}
-                </p>
-                <h1 class="mt-15 text-4xl">
-                    Event Description:
-                </h1>
-                <p>
-                    {{ $event->description }}
-                </p>
-                <h1 class="mt-15 text-4xl">
-                    Event Place:
-                </h1>
-                <p>
-                    {{ $event->event_place }}
-                </p>
-                <h1 class="mt-15 text-4xl">
-                    Event Attendee Count:
-                </h1>
-                <p>
-                    {{ $event->attendee_count }}
-                </p>
-                <h1 class="mt-15 text-4xl">
-                    Event Start and End:
-                </h1>
-                <p>
-                    {{ $event->start_date }} / {{ $event->end_date }}
-                </p>
-            </div>
-        </div>
+<h1 class="text-center text-blue-400 font-bold text-6xl uppercase mb-10">Kanban Bord</h1>
+
+    <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
+        Update About Event
     </div>
+
+    <div class="mb-5">
+                    <label for="kanban" class="block mb-2 font-bold text-gray-600">Update Kanban</label>
+                    <input type="text" id="kanban" name="kanban"
+                    required
+                    autocomplete = "on" placeholder="Put in Kanban" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                </div>
+
+    <button type="submit" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Update</button>
+
 </body>
 </html>
 @endsection
