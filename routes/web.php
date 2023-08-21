@@ -47,19 +47,23 @@ Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('s
 
 Route::resource('/event/{event}/budget',BudgetController::class);
 
-Route::get('/event/{event}/budget/create',[BudgetController::class,'create'])->name('budget.build');
+Route::get('/event/{event}/budget/create',[BudgetController::class,'create'])->name('budget.create');
 
 Route::post('/event/{event}/budget/create',[BudgetController::class,'store'])->name('budget.save');
 
-
-
 Route::get('/event/{event}/budget/{budget}/{expense}',[BudgetController::class,'showExpense'])->name('expense.show');
 
-Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('expense.create');
+Route::get('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'createExpense'])->name('build.expense');
 
-Route::post('/event/{event}/budget/{budget}/create',[BudgetController::class,'storeExpense'])->name('expense.store');
+Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'storeExpense'])->name('save.expense');
+
+// Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('build.expense');
+
+
 
 Route::resource('/profile', ProfileController::class);
+
+
 
 
 

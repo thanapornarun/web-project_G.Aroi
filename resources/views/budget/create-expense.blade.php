@@ -1,3 +1,4 @@
+
 @extends('layouts.main')
 
 @section('content')
@@ -9,18 +10,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <h1 class="font-bold text-gray-600" > {{$event->event_name}}</h1>
-    <h1 class="font-bold text-gray-600" > {{$budget->balance}}</h1>
-
 </head>
 
 
 <body>
+    <h1 class="text-center text-blue-400 font-bold text-3xl uppercase mb-10" > {{$event->event_name}}</h1>
+    <h1 class="text-center text-blue-400 font-bold text-3xl uppercase mb-10" > {{$budget->budget}}</h1>
+
     <div class="w-full">
         <h2 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Create New Expense</h2>
         <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
-            <form action="{{ route('expense.store',['budget'=>$budget]) }}" method="POST">
-            @csrf
+                <form action="{{ route('save.expense',['event'=>$event,'budget'=>$budget])}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-5">
                     <label for="bill_name" class="block mb-2 font-bold text-gray-600">Bill Name</label>
                     @error ('bill_name')
@@ -40,7 +41,7 @@
                                 {{ $message }}
                             </div>
                     @enderror
-                    <input type="integer" id="amount" name="amount" 
+                    <input type="decimal" id="amount" name="amount" 
                     autocomplete = "off" placeholder="Put in amount" 
                     value ="{{old('amount','') }}" 
                     class="border border-gray-300 @error('amount') border-red-600 @enderror shadow p-3 w-full rounded mb-">
@@ -53,7 +54,7 @@
                                 {{ $message }}
                             </div>
                     @enderror
-                    <input type="text" id="description" name="description" 
+                    <input type="text   " id="description" name="description" 
                     autocomplete = "off" placeholder="Put in description" 
                     value ="{{old('description','') }}" 
                     class="border border-gray-300  @error('description') border-red-600 @enderror shadow p-3 w-full rounded mb-">
@@ -90,7 +91,7 @@
                                     </div>
                                 </div>
 
-                                <input type="file" class="h-full w-full opacity-0" name="bill_path">
+                                <input type="file" class="h-full w-full opacity-0" name="imagePath" id="imagePath">
                             </div>
                         </div>
                     </div>
