@@ -12,9 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_roles', function (Blueprint $table) {
+        Schema::create('eventRoles', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(EventAttendee::class);
             $table->timestamps();
             $table->enum('roles', ['staff', 'treasurer', 'event attendee', 'guest', 'owner'])->default('guest');
         });
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_roles');
+        Schema::dropIfExists('EventRole');
     }
 };

@@ -13,6 +13,15 @@ class EventAttendee extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'event_id',
+        'event_role_id',
+        'status',        
+    ];
+
+    protected  $table = 'event_attendees';
+
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
@@ -23,7 +32,7 @@ class EventAttendee extends Model
         return $this->belongsTo(Event::class);
     }
 
-    public function eventRoles(): BelongsToMany
+    public function eventRole(): BelongsToMany
     {
         return $this->belongsToMany(EventRole::class);
     }

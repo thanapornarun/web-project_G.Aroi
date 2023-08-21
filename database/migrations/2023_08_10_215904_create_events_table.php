@@ -24,8 +24,8 @@ return new class extends Migration
             $table->string('event_place');
             $table->integer('attendee_count');
             $table->string('description');
-            $table->datetime('start_data');
-            $table->datetime('end_data');
+            $table->datetime('start_date');
+            $table->datetime('end_date');
             $table->enum('category', ['Education', 'Music and Festival']);
         });
     }

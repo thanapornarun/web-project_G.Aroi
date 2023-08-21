@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -188,55 +188,17 @@
 
 <body>
     <section>
-        <h1> All Event </h1>
-        <!-- Slideshow container -->
-        <div class="slideshow-container">
-
-            <!-- Full-width images with number and caption text -->
-            <div class="mySlides fade" style="">
-                <div class="numbertext">1 / 3</div>
-                <img src="https://phuketeventcompany.b-cdn.net/wp-content/uploads/2021/06/Expert-Event-Management-Your-Trusted-Event-Planner-and-Organizer-in-Bangkok-1.jpg" style="width:100%">
-                <div class="text">Caption Text</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <img src="https://jandevents.com/wp-content/uploads/jand-party.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
-            </div>
-
-            <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
-                <img src="https://www.adobe.com/content/dam/www/us/en/events/overview-page/eventshub_evergreen_opengraph_1200x630_2x.jpg" style="width:100%">
-                <div class="text">Caption Three</div>
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        </div>
-        <br>
-
-        <!-- The dots/circles -->
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-    </section>
-
-    <section>
         @if($latestEvents)
         <div class="container">
             <div class="row title-block justify-content-between flex">
                 <div class="col justify-self-center flex mb-5">
-                    <h4 class="mbr-section-subtitle mbr-fonts-style display-2"><strong>Latest Events</strong></h4>
+                    <h4 class="mbr-section-subtitle mbr-fonts-style display-2 border-b-4"><strong><i class="fa-solid fa-bell fa-shake"></i> Latest Events</strong></h4>
                 </div>
             </div>
-            <div class="grid grid-cols-3 gap-3 rounded-t-lg overflow-hidden justify-center">
+            <div class="grid grid-cols-4 gap-4 rounded-t-lg overflow-hidden justify-center">
                 @foreach ($latestEvents as $event)
-                <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">   
-                    <a href="/my_event/{{$event->id}}/">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">
+                    <a href=" {{ route('event.show', [ 'event' => $event ]) }}">
                         <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
                     </a>
                     <div class="px-6 py-4">
@@ -254,6 +216,34 @@
         @endif
     </section>
 
+    <section>
+        @if($events)
+        <div class="container">
+            <div class="row title-block justify-content-between flex">
+                <div class="col justify-self-center flex mb-5">
+                    <h4 class="mbr-section-subtitle mbr-fonts-style display-2 border-b-4"><strong><i class="fa-solid fa-sync fa-spin"></i> All Events</strong></h4>
+                </div>
+            </div>
+            <div class="grid grid-cols-4 gap-4 rounded-t-lg overflow-hidden justify-center">
+                @foreach ($events as $event)
+                <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">
+                    <a href=" {{ route('event.show', [ 'event' => $event ]) }}">
+                        <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
+                    </a>
+                    <div class="px-6 py-4">
+                        <div class="font-extrabold text-2xl mb-2">Event Name : {{ $event->event_name }}</div>
+                        <p class="text-base font-bold">
+                            Event Description : {{ $event->description }}
+                        </p>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+        @else
+        <p>No events available.</p>
+        @endif
+    </section>
 </body>
 
 </html>

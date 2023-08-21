@@ -4,8 +4,10 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\EventAttendeeController;
 use App\Http\Controllers\UserController;
 use App\Models\Event;
+use App\Models\EventAttendee;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -25,12 +27,30 @@ Route::get('/', function () {
         return view('welcome');
 });
 
+Route::resource('/profile', ProfileController::class);
+
+// Route::get('/events', [EventController::class, 'index'])
+//         ->name('events.index');
+
 // Route::resource('/event', Event::class);
 
-Route::resource('/my_event', EventController::class);
+Route::resource('/event', EventController::class);
+
+Route::resource('/eventAttendee', EventAttendeeController::class);        
+
+// Route::resource('/event', EventController::class);
+
+// Route::post('/event/{event}', [EventController::class, 'userJoinEvent'])->name('join.event');
+
+Route::middleware(['auth'])->group(function () {
+        Route::post('/event/{event}/join', [EventController::class, 'userJoinEvent'])->name('joinEvent');
+    });
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
+Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->name('eventManager');
+
+Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager'])->name('setEventRoleManager');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -61,9 +81,11 @@ Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'sto
 
 
 
-Route::resource('/profile', ProfileController::class);
+
+// Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
 
+<<<<<<< HEAD
 
 
 
@@ -75,10 +97,14 @@ Route::resource('/profile', ProfileController::class);
 
 
 // Route::get('/{user}/my_event', function () {
+=======
+
+// Route::get('/{user}/event', function () {
+>>>>>>> origin/wk
 //         return view('event.show-own-event');
 // });
 
-// Route::get('/{user}/my_event', [EventController::class, 'showUserEvents'])->name('user.my_event');
+// Route::get('/{user}/event', [EventController::class, 'showUserEvents'])->name('user.event');
 
 
 
