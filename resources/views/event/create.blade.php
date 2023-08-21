@@ -22,7 +22,7 @@
     <body>
     <div class="w-full">
         <h1 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Create Event</h1>
-        <form action="{{ route('event.store',['user'=> $user]) }}" method="POST">
+        <form action="{{ route('event.store',['user'=> $user]) }}" method="POST" enctype="multipart/form-data">
       
         <div class="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
             @csrf
@@ -56,14 +56,12 @@
                     autocomplete = "on" placeholder="Put in description" class="border border-gray-300 shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
-                    <label for="start" class="block mb-2 font-bold text-gray-600">Start date</label>
                     <label for="start">Start date(date and time):</label>
                     <input type="datetime-local" id="start" name="start"
                     required
                     autocomplete = "on" placeholder="Put in start date" class="border border-gray-300 shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
-                    <label for="end_date" class="block mb-2 font-bold text-gray-600">End date</label>
                     <label for="end_date">End date(date and time):</label>
                     <input type="datetime-local" id="end_date" name="end_date"
                     required
@@ -77,7 +75,7 @@
                 </div>
                 <div class="mb-5">
                     <label for="poster_path" class="block mb-2 font-bold text-gray-600">Poster</label>
-                    <input type="text" id="poster_path" name="poster_path"
+                    <input type="file" id="poster_path" name="poster_path"
                     required
                     autocomplete = "on" placeholder="Put in Poster" class="border border-gray-300 shadow p-3 w-full rounded mb-">
                 </div>

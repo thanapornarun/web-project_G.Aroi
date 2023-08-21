@@ -71,6 +71,9 @@
                         <span class="ml-1">Owner : {{ $profile->full_name }}</span>
                     </span>
                 </div>
+
+
+                <img src="{{ asset('storage/' . $event->poster_path) }}">
             </div>
             @endif
             @endforeach
