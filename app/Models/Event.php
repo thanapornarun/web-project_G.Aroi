@@ -12,14 +12,14 @@ class Event extends Model
 {
     use HasFactory;
 
-    // public function event_roles(): HasMany
+    // public function EventRoles(): HasMany
     // {
-    //     return $this->hasMany(Event_Role::class);
+    //     return $this->hasMany(EventRole::class);
     // }
 
     public function eventAttendees(): HasMany
     {
-        return $this->hasMany(eventAttendee::class);
+        return $this->hasMany(EventAttendee::class);
     }
 
     public function budgets(): HasMany

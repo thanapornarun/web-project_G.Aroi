@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
-class Event_Role extends Model
+class EventRole extends Model
 {
     use HasFactory;
 
-    protected $table = 'event_roles';
+    protected $table = 'eventRoles';
 
     protected $fillable = ['roles'];
 

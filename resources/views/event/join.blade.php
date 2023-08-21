@@ -15,11 +15,24 @@
 <style>
     body {
         background-color: #0f0e17;
+        color: #fffffe;
+        font-family: 'Poppins';
+        font-size: 13px;
+    }
+
+    p {
+        color: #0f0e17;
+        font-weight: 600;
+    }
+
+    h1 {
+        color: #0f0e17;
+        font-weight: bolder;
     }
 </style>
 
 <body>
-    <h1> Join </h1>
+    Join Secc
 </body>
 
 </html>

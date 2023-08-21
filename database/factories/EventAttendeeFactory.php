@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Event;
-use App\Models\Event_Role;
+use App\Models\EventRole;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +24,7 @@ class EventAttendeeFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'event_id' => Event::inRandomOrder()->first()->id,
-            'event_role_id' => Event_Role::inRandomOrder()->first()->id,
+            'eventRoles_id' => EventRole::inRandomOrder()->first()->id,
             'status' => $this->faker->randomElement($status),
         ];
     }

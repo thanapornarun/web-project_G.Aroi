@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
-use App\Models\Event_Role;
 use App\Models\EventAttendee;
+use App\Models\EventRole;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -35,17 +35,19 @@ class EventController extends Controller {
         $event_name =  $request->get( 'name' );
 
         $request->validate( [ 'name' => [ 'required', 'string', 'min:3', 'max:255' ] ] );
-
+        $user = auth()->user();
+        $userId = $user->id;
         $event = new Event();
         $event->event_name = $request->get( 'name' );
         $event->event_poster_path = $request->get( 'poster_path' );
         $event->event_place = $request->get( 'place' );
         $event->attendee_count = $request->get( 'attendee' );
         $event->description = $request->get( 'description' );
-        $event->start_data = $request->get( 'start' );
-        $event->end_data = $request->get( 'end_data' );
+        $event->start_date = $request->get( 'start' );
+        $event->end_date = $request->get( 'end_date' );
+        $event->user_id = $userId;
         $event->save();
-        return redirect()->route( 'budget.create' );
+        /*return redirect()->route('budget.create');*/
     }
 
     /**
@@ -54,7 +56,13 @@ class EventController extends Controller {
 
     public function show( $id ) {
         $event = Event::find($id);
-        return view( 'event.show', [ 'event' => $event] );
+        $user = auth()->user();
+        $eats = EventAttendee::where('user_id', $user->id)->where('event_id', $event->id)->get();
+        $showbtn = true;
+        if (count($eats) > 0) {
+            $showbtn = false;
+        }
+        return view('event.show', ['event' => $event, 'showbtn' => $showbtn]);
     }
 
     /**
@@ -89,29 +97,56 @@ class EventController extends Controller {
 
     public function showWelcomeWithLatestEvent() {
         $latestEvents = Event::latest()->take( 6 )->get();
-        ;
         return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
     }
 
-    public function joinEvent() {
-        $latestEvents = Event::latest()->take( 6 )->get();
-        ;
-        return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
+    // public function joinEvent() {
+    //     $latestEvents = Event::latest()->take( 6 )->get();
+    //     return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
+    // }
+
+    public function userJoinEvent(Request $request, Event $event) {
+        $user = auth()->user();
+
+        // $eventAttendee = $event->eventAttendees()->create([
+        //     'user_id' => $user->id,
+        //     'event_id' => $event->id,
+        //     'event_role_id' => EventRole::first()->id,
+        // ]);
+
+
+        $eats = EventAttendee::where('user_id', $user->id)->where('event_id', $event->id)->get();
+        if (count($eats) > 0) {
+            echo "this event is joined";
+        } else {
+            $eventAttendee = $event->eventAttendees()->create([
+                'user_id' => $user->id,
+                'event_id' => $event->id,
+                'event_role_id' => EventRole::first()->id,
+            ]);
+        }
+
+        return view('event.join');
     }
 
-    public function userJoinEvent(User $user, Event $event ) {
-        $event_role = Event_Role::create( [
-            'user_id' => $user->id
-        ] );
+    public function teamManager(Event $event) {
+        $users = User::get();
+        $eventRoles = EventRole::get();
+        $eventAttendees = EventAttendee::get();
+        return view('event.team-manager', ['event' => $event, 'users' => $users, 'eventRoles' => $eventRoles, 'eventAttendees' => $eventAttendees]);
+    }
 
-        $eventAttendee = EventAttendee::create( [
-            'user_id' => $user->id,
+    public function setTeamManager(Request $request, Event $event) {
+        $eventAttendee = $event->eventAttendees()->create([
+            'user_id' => $request->get('userId'),
             'event_id' => $event->id,
-            'event_role_id' => $event_role->id,
-        ] );
+            'event_role_id' => $request->get('eventRoleId'),
+        ]);
 
-        $event->eventAttendees_id = $eventAttendee;
+        $eventAttendee->status = 'pass';
+        $eventAttendee->save();
 
-        return redirect()->route( '/' );
+        return redirect()->route('event.index', ['event' => $event]);
     }
+
 }

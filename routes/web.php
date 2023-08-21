@@ -25,12 +25,30 @@ Route::get('/', function () {
         return view('welcome');
 });
 
+Route::resource('/profile', ProfileController::class);
+
+// Route::get('/events', [EventController::class, 'index'])
+//         ->name('events.index');
+
 // Route::resource('/event', Event::class);
 
-Route::resource('/my_event', EventController::class);
+Route::resource('/event', EventController::class);
+
+//Route::resource('/create_event', EventController::class);
+
+// Route::resource('/event', EventController::class);
+
+// Route::post('/event/{event}', [EventController::class, 'userJoinEvent'])->name('join.event');
+
+Route::middleware(['auth'])->group(function () {
+        Route::post('/event/{event}/join', [EventController::class, 'userJoinEvent'])->name('joinEvent');
+    });
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
+Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->name('eventManager');
+
+Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager'])->name('setEventRoleManager');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -59,22 +77,19 @@ Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'cre
 
 Route::post('/event/{event}/budget/{budget}/create',[BudgetController::class,'storeExpense'])->name('expense.store');
 
-Route::resource('/profile', ProfileController::class);
+
+// Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
 
 
 
-// Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
-// Route::get('/my_events', [EventController::class, 'index'])
-//         ->name('events.index');
+// Route::get('/{user}/event', function () {
 
-
-// Route::get('/{user}/my_event', function () {
 //         return view('event.show-own-event');
 // });
 
-// Route::get('/{user}/my_event', [EventController::class, 'showUserEvents'])->name('user.my_event');
+// Route::get('/{user}/event', [EventController::class, 'showUserEvents'])->name('user.event');
 
 
 
