@@ -32,7 +32,12 @@
 </style>
 
 <body>
-    Join Su
+<h1 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Join Success</h1>
+<center>
+<a class="mt-5 inline-block px-12 py-3 text-sm font-large border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="/" style="background-color: #eebbc3; color: #232946;">
+                        Accept
+</a>
+</center>
 </body>
 
 </html>
