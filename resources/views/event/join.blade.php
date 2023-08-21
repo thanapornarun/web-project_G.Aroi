@@ -32,7 +32,7 @@
 </style>
 
 <body>
-    Join Secc
+    Join Su
 </body>
 
 </html>
