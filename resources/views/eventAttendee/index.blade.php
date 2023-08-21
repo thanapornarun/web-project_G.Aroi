@@ -42,8 +42,9 @@
             <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
             <img src="{{ $eventAttendee->event->event_poster_path }}" alt=""></img>
             <div class="my-4">
-                <h2 class="text-black text-2xl font-bold pb-2">{{ $eventAttendee->event->event_name }}</h2>
-                <p class="text-black py-1">{{ $eventAttendee->event->description }}</p>
+                <h2 class="text-black text-2xl font-bold pb-2">Event: {{ $eventAttendee->event->event_name }}</h2>
+                <p class="text-black py-1">Event Description: {{ $eventAttendee->event->description }}</p>
+                <p class="text-black py-1"><i class="fa-solid fa-compact-disc fa-spin" style="--fa-animation-duration: 30s; --fa-animation-iteration-count: 1;"></i> Your Status: {{ $eventAttendee->status }}</p>
             </div>
 
             <div class="flex justify-end">

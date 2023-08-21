@@ -52,8 +52,6 @@ Route::get('/event/{event}/manager', [EventController::class, 'teamManager'])->n
 
 Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager'])->name('setEventRoleManager');
 
-// Route::get('/event/{eventAttendee}/joinedEvent', [EventAttendeeController::class, 'eventJoinedShow'])->name('show.joinedEvent');
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

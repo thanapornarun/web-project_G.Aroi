@@ -32,7 +32,7 @@
 </style>
 
 <body>
-<div class="container">
+    <div class="container">
         <div class="bg-white overflow-hidden shadow rounded-lg border">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="leading-6 font-bold text-gray-900">
@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="border-t border-gray-200 sm:p-0" style="padding: 60px;">
-                <img class="object-center" src="{{ $event->event_poster_path}} " alt="" style="height: 600px; width: 600px;">  </img>
+                <img class="object-center" src="{{ $event->event_poster_path}} " alt="" style="height: 600px; width: 600px;"> </img>
                 <h1 class="text-4xl">
                     Event Name:
                 </h1>
@@ -72,8 +72,9 @@
                     Event Start and End:
                 </h1>
                 <p>
-                {{ $event->start_date }} / {{ $event->end_date }}
+                    {{ $event->start_date }} / {{ $event->end_date }}
                 </p>
+                @if(Auth::check())
                 @if($showbtn)
                 <form action="{{ route('joinEvent', ['event' => $event ]) }}" method="POST">
                     @csrf
@@ -81,6 +82,7 @@
                         Join
                     </button>
                 </form>
+                @endif
                 @endif
             </div>
         </div>

@@ -56,17 +56,22 @@ class EventController extends Controller
      * Display the specified resource.
      */
 
-    public function show($id)
+    public function show(Event $event)
     {
-        $event = Event::find($id);
+        // $event = Event::find($id);
         $user = auth()->user();
-        $eats = EventAttendee::where('user_id', $user->id)->where('event_id', $event->id)->get();
-        $showbtn = true;
-        if (count($eats) > 0) {
-            $showbtn = false;
+        // dd($event);
+
+        if ($user) {
+            $eats = EventAttendee::where('user_id', $user->id)->where('event_id', $event->id)->get();
+            $showbtn = true;
+            if (count($eats) > 0) {
+                $showbtn = false;
+            }
+            return view('event.show', ['event' => $event, 'showbtn' => $showbtn]);
         }
 
-        return view('event.show', ['event' => $event, 'showbtn' => $showbtn]);
+        return view('event.show', ['event' => $event]);
     }
 
     /**
@@ -104,13 +109,15 @@ class EventController extends Controller
 
     public function showWelcomeWithLatestEvent()
     {
-        $latestEvents = Event::latest()->take(6)->get();
-        return view('welcome', ['latestEvents' => $latestEvents]);
+        $latestEvents = Event::latest()->take(4)->get();
+        $events = Event::get();
+        return view('welcome', ['latestEvents' => $latestEvents, 'events' => $events]);
     }
 
-    // public function joinEvent() {
-    //     $latestEvents = Event::latest()->take( 6 )->get();
-    //     return view( 'welcome', [ 'latestEvents' => $latestEvents ] );
+    // public function showWelcomeWithAllEvent()
+    // {
+    //     $events = Event::get();
+    //     return view('welcome', ['events' => $events]);
     // }
 
     public function userJoinEvent(Request $request, Event $event)
