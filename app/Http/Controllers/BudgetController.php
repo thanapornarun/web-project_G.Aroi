@@ -36,8 +36,7 @@ class BudgetController extends Controller
     {   
 
         $request->validate(['budget' => ['required', 'integer']]);
-
-        $budget = new Event();
+        $budget = new Budget();
         $budget->budget = $request->get('budget');
         $budget->event_id = $event->id;
         $budget->balance = $request->get('budget');
