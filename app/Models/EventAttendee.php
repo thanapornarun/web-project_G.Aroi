@@ -29,7 +29,7 @@ class EventAttendee extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(User::class);
     }
 
     public function eventRole(): BelongsToMany
