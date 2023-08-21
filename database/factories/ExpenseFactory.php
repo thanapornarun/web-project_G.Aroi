@@ -20,7 +20,7 @@ class ExpenseFactory extends Factory
         return [
             'budget_id' => Budget::inRandomorder()->first()->id,
             'bill_name'=>fake()->name(),
-            'bill_path'=>fake()->name(),
+            'bill_path'=>"istockphoto-889405434-612x612.jpg",
             'description'=>fake()->realText(),
             'amount'=>fake()->numberBetween(20,5000),
             'expense_date'=>fake()->dateTime(),

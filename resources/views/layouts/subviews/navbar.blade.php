@@ -88,6 +88,7 @@
                             <li><a href="/profile" style="font-weight: 600" >My Profile</a></li>
                             <li><a href="/event" style="font-weight: 600">My Event</a></li>
                             <li><a href="{{ route('event.create') }}" style="font-weight: 600"><i class="fa-regular fa-calendar-plus" style="padding-right: 5px;"></i> Create Event</a></li>
+                            <li><a href="/eventAttendee" style="font-weight: 600">Event Joined</a></li>
                             <li>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf

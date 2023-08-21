@@ -4,8 +4,10 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BudgetController;
+use App\Http\Controllers\EventAttendeeController;
 use App\Http\Controllers\UserController;
 use App\Models\Event;
+use App\Models\EventAttendee;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +37,7 @@ Route::resource('/profile', ProfileController::class);
 Route::resource('/event', EventController::class);
 
 //Route::resource('/create_event', EventController::class);
+Route::resource('/eventAttendee', EventAttendeeController::class);        
 
 // Route::resource('/event', EventController::class);
 
@@ -65,17 +68,19 @@ Route::post('/event/{event}/manager', [EventController::class, 'setTeamManager']
 
 Route::resource('/event/{event}/budget',BudgetController::class);
 
-Route::get('/event/{event}/budget/create',[BudgetController::class,'create'])->name('budget.build');
+Route::get('/event/{event}/budget/create',[BudgetController::class,'create'])->name('budget.create');
 
 Route::post('/event/{event}/budget/create',[BudgetController::class,'store'])->name('budget.save');
 
-
-
 Route::get('/event/{event}/budget/{budget}/{expense}',[BudgetController::class,'showExpense'])->name('expense.show');
 
-Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('expense.create');
+Route::get('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'createExpense'])->name('build.expense');
 
-Route::post('/event/{event}/budget/{budget}/create',[BudgetController::class,'storeExpense'])->name('expense.store');
+Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'storeExpense'])->name('save.expense');
+
+// Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('build.expense');
+
+
 
 
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
@@ -86,6 +91,19 @@ Route::post('/event/{event}/budget/{budget}/create',[BudgetController::class,'st
 
 // Route::get('/{user}/event', function () {
 
+
+
+
+
+// Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
+
+// Route::get('/my_events', [EventController::class, 'index'])
+//         ->name('events.index');
+
+
+// Route::get('/{user}/my_event', function () {
+
+// Route::get('/{user}/event', function () {
 //         return view('event.show-own-event');
 // });
 
