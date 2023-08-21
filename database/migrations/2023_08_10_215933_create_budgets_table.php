@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Event::class);
             $table->decimal('budget');
-            $table->decimal('balance');
+            $table->decimal('balance')->default(0);
             $table->timestamps();
         });
     }

@@ -20,7 +20,7 @@ class BudgetFactory extends Factory
         return [
             'event_id' => Event::inRandomorder()->first()->id,
             'budget' => fake()->numberBetween(200000, 500000),
-            'balance' => 0,
+            'balance' => fake()->numberBetween(0, 300000),
         ];
     }
 }

@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Budget::class);
-            $table->timestamps();
             $table->string('bill_name');
-            $table->string('bill_path');
+            $table->string('bill_path')->default("istockphoto-889405434-612x612.jpg");
             $table->string('description');
             $table->decimal('amount');
-            $table->datetime('expense_date');
+            $table->datetime('expense_date')->default('1111-11-11 11:11:11');
+            $table->timestamps();
         });
     }
 

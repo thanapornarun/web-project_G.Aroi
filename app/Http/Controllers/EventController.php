@@ -49,7 +49,7 @@ class EventController extends Controller
         $event->start_date = $request->get('start');
         $event->end_date = $request->get('end_date');
         $event->save();
-        return redirect()->route('event.index');
+        return redirect()->route( 'budget.create' );
     }
 
     /**

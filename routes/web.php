@@ -78,11 +78,21 @@ Route::post('/event/{event}/setStatus', [EventController::class, 'setEventAttend
 // });
 // Route::get('/profile', [ProfileController::class,'index'])->name('budget.index');
 
-Route::resource('/{event}/budget',BudgetController::class);
+Route::resource('/event/{event}/budget',BudgetController::class);
 
-Route::get('/{event}/budget/create',[BudgetController::class,'createExpense'])->name('budget.expense.create');
+Route::get('/event/{event}/budget/create',[BudgetController::class,'create'])->name('budget.create');
 
-Route::post('/{event}/budget/create',[BudgetController::class,'storeExpense'])->name('budget.expense.store');
+Route::post('/event/{event}/budget/create',[BudgetController::class,'store'])->name('budget.save');
+
+Route::get('/event/{event}/budget/{budget}/{expense}',[BudgetController::class,'showExpense'])->name('expense.show');
+
+Route::get('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'createExpense'])->name('build.expense');
+
+Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'storeExpense'])->name('save.expense');
+
+// Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('build.expense');
+
+
 
 
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
