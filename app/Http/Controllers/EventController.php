@@ -38,18 +38,28 @@ class EventController extends Controller
 
         $event_name =  $request->get('name');
 
-        $request->validate(['name' => ['required', 'string', 'min:3', 'max:255']]);
-
+        $request->validate( [ 'name' => [ 'required', 'string', 'min:3', 'max:255' ] ] );
+        $user = auth()->user();
+        $userId = $user->id;
         $event = new Event();
-        $event->event_name = $request->get('name');
-        $event->event_poster_path = $request->get('poster_path');
-        $event->event_place = $request->get('place');
-        $event->attendee_count = $request->get('attendee');
-        $event->description = $request->get('description');
-        $event->start_date = $request->get('start');
-        $event->end_date = $request->get('end_date');
+        $event->event_name = $request->get( 'name' );
+        $event->event_poster_path = $request->get( 'poster_path' );
+    
+        $event->event_place = $request->get( 'place' );
+        $event->attendee_count = $request->get( 'attendee' );
+        $event->description = $request->get( 'description' );
+        $event->start_date = $request->get( 'start' );
+        $event->end_date = $request->get( 'end_date' );
+        $event->user_id = $userId;
+
+        if ($request->hasFile('poster_path')) {
+            // บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'event_images' ที่ storage/app/public
+            $path = $request->file('poster_path')->store('event_images', 'public');
+            $event->event_poster_path = $path;
+        }
+
         $event->save();
-        return redirect()->route( 'budget.create' );
+        return redirect()->route('budget.create',['event'=>$event]);
     }
 
     /**

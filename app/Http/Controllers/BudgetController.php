@@ -14,9 +14,8 @@ class BudgetController extends Controller
      */
     public function index(Event $event)
     {
-        $allBudget = Budget::get();
-        
-        $budget = $allBudget->find(1);
+        $budget = Budget::where('event_id',$event->id)->first();
+    
         return view('budget.index', ['event' => $event, 'budget' => $budget]);
     }
 
@@ -35,14 +34,15 @@ class BudgetController extends Controller
     public function store(Request $request, Event $event)
     {   
 
+        $budget_amount = $request->get('budget');
         $request->validate(['budget' => ['required', 'integer']]);
 
-        $budget = new Event();
-        $budget->budget = $request->get('budget');
+        $budget = new Budget();
+        $budget->budget = $budget_amount;
         $budget->event_id = $event->id;
-        $budget->balance = $request->get('budget');
+        $budget->balance = $budget_amount;
         $budget->save();
-        return redirect()->route('budget.index');
+        return redirect()->route('budget.index',['event'=>$event]);
     }
 
     /**
@@ -128,15 +128,12 @@ class BudgetController extends Controller
             $expense->bill_path = $request->file('image_path');
         }
 
-        
-        
-        
 
 // Check if bill_path is provided, otherwise use default
     
         $expense->save();
 
-        $budget->balance = ($budget->balance)-($expense_amount);
+        $budget->balance = ($budget->balance)-($expense->amount);
         $budget->save();
         
         return redirect()->route('budget.index', ['event'=>$event, 'budget' => $budget]);

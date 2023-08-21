@@ -37,6 +37,7 @@ Route::resource('/profile', ProfileController::class);
 Route::resource('/event', EventController::class);
 
 Route::resource('/eventAttendee', EventAttendeeController::class);        
+//Route::resource('/create_event', EventController::class);
 
 // Route::resource('/event', EventController::class);
 

@@ -15,20 +15,22 @@
 </head>
 
 
-<body>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+<body>
+           
+    @if(!(is_null($budget)))
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         <div class="py-2 px-4">
             <h2 class="text-center text-blue-400 font-bold text-3xl uppercase mb-10">Budget List</h2>
             <h3 class="text-center text-blue-400 font-bold text-3xl uppercase mb-10">BUDGET : {{$budget->budget}}</h3>
             <h3 class="text-center text-blue-400 font-bold text-3xl uppercase mb-10">BALANCE : {{$budget->balance}}</h3>
+             
             <center>
             <a class=" margin-left ml-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring " href="{{ route('build.expense', ['event' => $event, 'budget' => $budget]) }}" style="background-color: #eebbc3; color: #232946;">
                     Add Expense
             </a>
-            </center>
-            
-        </div>
+            </center>         
+        </div>     
 
         <ul class="divide-y divide-gray-200">
         @if($budget->expenses->isNotEmpty())
@@ -52,7 +54,7 @@
             <span class="text-gray-400"></span>
             @endforeach
         @endif
-        
+    @endif   
         </ul>
     </div>
 
