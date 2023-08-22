@@ -34,6 +34,8 @@
             <h2 class="text-2xl text-gray-600 text-center mb-15 ">Description : {{$expense->description}}</h2>
         </div>
     </div>
+    
+
 
 </div>
 

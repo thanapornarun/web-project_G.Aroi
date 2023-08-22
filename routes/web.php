@@ -96,9 +96,12 @@ Route::post('/event/{event}/budget/create',[BudgetController::class,'store'])->n
 
 Route::get('/event/{event}/budget/{budget}/{expense}',[BudgetController::class,'showExpense'])->name('expense.show');
 
+// Route::get('/budget/{budget}/{expense}/',[BudgetController::class,'destroyExpense'])->name('expense.delete');
+
 Route::get('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'createExpense'])->name('build.expense');
 
 Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'storeExpense'])->name('save.expense');
+
 
 // Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('build.expense');
 

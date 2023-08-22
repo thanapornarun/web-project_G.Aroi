@@ -58,12 +58,8 @@ class EventController extends Controller
             $path = $request->file('poster_path')->store('event_images', 'public');
             $event->event_poster_path = $path;
         }
-
-        
         $event->save();
 
-        $certificate = new Certificate();
-        $certificate->event_id = $event->id;
         return redirect()->route('budget.create',['event'=>$event]);
     }
 

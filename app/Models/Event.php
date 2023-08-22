@@ -32,9 +32,6 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function certificate():BelongsTo{
-        return $this->belongsTo(Cretificate::class);
-    }
 
     public function kanban():HasMany{
         return $this->hasMany(KanbanBoard::class);

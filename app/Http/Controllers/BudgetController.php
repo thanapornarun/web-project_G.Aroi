@@ -158,7 +158,10 @@ class BudgetController extends Controller
      */
     public function destroyExpense(Expense $expense, Budget $budget)
     {
+        $budget->balance = (($budget->balance) + ($expense->amount));
+        $budget->save();
         $expense->delete();
+
 
         return redirect()->route('budget.index', ['budget' => $budget]);
     }
