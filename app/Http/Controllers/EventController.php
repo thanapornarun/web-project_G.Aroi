@@ -8,6 +8,7 @@ use App\Models\EventRole;
 use App\Models\User;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator;
 
 class EventController extends Controller
 {
@@ -40,6 +41,13 @@ class EventController extends Controller
         $event_name =  $request->get('name');
 
         $request->validate( [ 'name' => [ 'required', 'string', 'min:3', 'max:255' ] ] );
+        $request->validate( [ 'place' => [ 'required', 'string', 'min:3', 'max:255' ] ] );
+        $request->validate( [ 'description' => [ 'required', 'string', 'min:3', 'max:255' ] ] );
+        $request->validate( [ 'attendee' => [ 'required','decimal:0,1000.00']]);
+       // $request->validate( ['start' => [ 'required','before_or_equals:2023-08-20 19:14:53']] );
+       // $request->validate( ['end_date' =>  ['required','after_or_equals:start'] ]);
+
+
         $user = auth()->user();
         $userId = $user->id;
         $event = new Event();

@@ -35,49 +35,76 @@
                     @enderror
                     <input type="text" id="name" name="name"
                     required
-                    autocomplete = "on" placeholder="Put in event name" class="border border-gray-300 @error('name') border-red-600 @enderror shadow p-3 w-full rounded mb-" >
+                    autocomplete = "on" value ="{{old('name','') }}" placeholder="Put in event name" class="border border-gray-300 @error('name') border-red-600 @enderror shadow p-3 w-full rounded mb-" >
                 </div>
                 <div class="mb-5">
                     <label for="place" class="block mb-2 font-bold text-gray-600">Event Place</label>
+                    @error ('place')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                    @enderror
                     <input type="text" id="place" name="place"
                     required
-                    autocomplete = "on" placeholder="Put in event place" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" value ="{{old('place','') }}" placeholder="Put in event place" class="border border-gray-300 @error('place') border-red-600 @enderror shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
                     <label for="attendee" class="block mb-2 font-bold text-gray-600">Number of attendee</label>
+                    @error ('attendee')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                    @enderror
                     <input type="integer" id="attendee" name="attendee"
                     required
-                    autocomplete = "on" placeholder="Put in number of attendee" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" value ="{{old('attendee','') }}" placeholder="Put in number of attendee" class="border border-gray-300 @error('attendee') border-red-600 @enderror shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
                     <label for="description" class="block mb-2 font-bold text-gray-600">Description</label>
+                    @error ('description')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                    @enderror
                     <input type="text" id="description" name="description"
                     required
-                    autocomplete = "on" placeholder="Put in description" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" 
+                    value ="{{old('description','') }}" placeholder="Put in description" class="border border-gray-300 @error('description') border-red-600 @enderror shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
                     <label for="start">Start date(date and time):</label>
+                    @error ('start')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                    @enderror
                     <input type="datetime-local" id="start" name="start"
                     required
-                    autocomplete = "on" placeholder="Put in start date" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" value ="{{old('start','') }}"
+                    placeholder="Put in start date" class="border border-gray-300 @error('start') border-red-600 @enderror shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
                     <label for="end_date">End date(date and time):</label>
+                    @error ('end_date')
+                            <div class="alert alert-danger">
+                                {{ $message }}
+                            </div>
+                    @enderror
                     <input type="datetime-local" id="end_date" name="end_date"
                     required
-                    autocomplete = "on" placeholder="Put in end date" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" value ="{{old('end_date','') }}" placeholder="Put in end date" class="border border-gray-300 @error('end_date') border-red-600 @enderror shadow p-3 w-full rounded mb-">
                 </div>
                 <div class="mb-5">
                     <label for="title" class="block mb-2 font-bold text-gray-600">Category</label>
                     <input type="text" id="title" name="title"
                     required
-                    autocomplete = "on" placeholder="Put in category" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" value ="{{old('title','') }}" placeholder="Put in category" class="border border-gray-300 shadow p-3 w-full rounded mb-">
                 </div>                   
                 <div class="mb-5">
                     <label for="poster_path" class="block mb-2 font-bold text-gray-600">Poster</label>
                     <input type="file" id="poster_path" name="poster_path"
                     required
-                    autocomplete = "on" placeholder="Put in Poster" class="border border-gray-300 shadow p-3 w-full rounded mb-">
+                    autocomplete = "on" value ="{{old('poster_path','') }}" placeholder="Put in Poster" class="border border-gray-300 shadow p-3 w-full rounded mb-">
                 </div>
 
                 <button type="submit" class="block w-full bg-blue-500 text-white font-bold p-4 rounded-lg">Submit</button>
