@@ -153,7 +153,12 @@ class EventController extends Controller
     {
         $users = User::get();
         $eventRoles = EventRole::get();
-        $eventAttendees = EventAttendee::get();
+
+        $eventAttendees = EventAttendee::with(['user'])->get();
+        // > EventAttendee::where('event_id',1)->where('user_id',2)->first()->event_role_id
+        // $users = User::with('eventAttendees')->get();
+        // dd($users);
+
         return view('event.team-manager', ['event' => $event, 'users' => $users, 'eventRoles' => $eventRoles, 'eventAttendees' => $eventAttendees]);
     }
 
@@ -175,10 +180,10 @@ class EventController extends Controller
     {
         // $users = User::get();
 
-        $eventsJoin = Event::with('eventAttendees.user')->where('id', $event->id)->get();
+        $eventJoin = Event::with('eventAttendees.user')->where('id', $event->id)->first();
         // dd($eventJoin);
         
-        return view('event.eventAttendeeSetStatus', ['event' => $event, 'eventsJoin' => $eventsJoin]);
+        return view('event.eventAttendeeSetStatus', ['event' => $event, 'eventJoin' => $eventJoin]);
     }
     
     public function setEventAttendeeStatus(Request $request,Event $event)
