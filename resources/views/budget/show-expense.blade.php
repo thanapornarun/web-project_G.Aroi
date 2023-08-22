@@ -23,11 +23,11 @@
 <body>
 <div class="py-16">
     <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-        <div class="hidden lg:block lg:w-1/2 bg-cover">
-            <img class="w-full" src="{{ asset('public/' . $expense->bill_path) }}" alt="">
-        </div>
-        <div class="w-full p-8 lg:w-1/2">
-            <h1 class="text-5xl font-semibold text-gray-700 text-center mb-60">{{$expense->bill_name}}</h1>
+        
+        <div class="w-full p-8 ">
+            <h1 class="text-5xl font-semibold text-gray-700 text-center mb-2">{{$expense->bill_name}}</h1>
+            <img class="w-full" src="{{ url('storage/'.$expense->bill_path) }}" alt="" 
+            vspace ="10">
             <h2 class="text-2xl text-gray-600 text-center mb-15">Amount : {{$expense->amount}}</h2>
             <h2 class="text-2xl text-gray-600 text-center mb-15 ">Date Purchase : {{$expense->expense_date}}</h2>
 
