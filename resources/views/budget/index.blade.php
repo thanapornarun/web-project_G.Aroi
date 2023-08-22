@@ -14,6 +14,11 @@
 
 </head>
 
+<style>
+    body {
+        background-color: #0f0e17;
+    }
+</style>
 
 
 <body>
@@ -39,7 +44,7 @@
             <a href = "{{route ('expense.show',['event'=>$event,'budget'=>$budget,'expense'=>$expense])}}"> 
                 <div class="rounded overflow-hidden shadow-lg flex flex-col bg-white">
                     <div class="relative">
-                        <img class="w-full" src="{{$event->event_poster_path}}" alt="">
+                        <img class="w-full" src="{{ url('storage/'.$event->event_poster_path) }}" alt="">
                     </div>
                 <div class="px-6 py-4 mb-auto">
                 </a>

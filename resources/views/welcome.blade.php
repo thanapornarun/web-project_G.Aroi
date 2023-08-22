@@ -199,7 +199,7 @@
                 @foreach ($latestEvents as $event)
                 <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">
                     <a href=" {{ route('event.show', [ 'event' => $event ]) }}">
-                        <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
+                        <img class="w-full"  src="{{ url('storage/'.$event->event_poster_path) }}" alt="">
                     </a>
                     <div class="px-6 py-4">
                         <div class="font-extrabold text-2xl mb-2">Event Name : {{ $event->event_name }}</div>
@@ -228,7 +228,7 @@
                 @foreach ($events as $event)
                 <div class="max-w-sm rounded overflow-hidden shadow-lg mb-5border-2 border-black-2 mb-5" style="background-color: #fffffe; color: #232946">
                     <a href=" {{ route('event.show', [ 'event' => $event ]) }}">
-                        <img class="w-full" src="{{ $event->event_poster_path }}" alt="">
+                        <img class="w-full" src="{{ url('storage/'.$event->event_poster_path) }}" alt="">
                     </a>
                     <div class="px-6 py-4">
                         <div class="font-extrabold text-2xl mb-2">Event Name : {{ $event->event_name }}</div>

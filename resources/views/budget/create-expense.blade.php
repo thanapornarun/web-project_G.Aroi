@@ -12,6 +12,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
+<style>
+    body {
+        background-color: #0f0e17;
+    }
+</style>
 
 <body>
     <h1 class="text-center text-blue-400 font-bold text-3xl uppercase mb-10" > {{$event->event_name}}</h1>
@@ -61,12 +66,12 @@
                 </div>
 
                 <div class="mb-5">
-                    <label for="date" class="block mb-2 font-bold text-gray-600">Birthday (date and time):</label>
+                    <label for="date" class="block mb-2 font-bold text-gray-600">Date Purchese (date and time):</label>
                     @error ('date')
                             <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                     <input type="datetime-local" id="date" name="date"
-                    autocomplete = "off" placeholder="Put in description" 
+                    autocomplete = "off" placeholder="Put in Date Purchese" 
                     value ="{{old('date','') }}" 
                     class="border border-gray-300  @error('date') border-red-600 @enderror shadow p-3 w-full rounded mb-">
                 </div>

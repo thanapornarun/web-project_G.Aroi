@@ -145,7 +145,7 @@ class EventController extends Controller
 
         $eats = EventAttendee::where('user_id', $user->id)->where('event_id', $event->id)->get();
         if (count($eats) > 0) {
-            echo "this event is joined";
+            // echo "this event is joined";
         } else {
             $eventAttendee = $event->eventAttendees()->create([
                 'user_id' => $user->id,
