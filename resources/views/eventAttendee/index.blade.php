@@ -56,8 +56,8 @@
                 </button>
                 @if($eventAttendee->event_role_id == 3||$eventAttendee->event_role_id == 5)
                 <button class="px-2 py-1 text-black border border-gray-200 font-semibold rounded hover:bg-gray-800">
-                    <a href=" {{ route('event.show', [ 'event' => $eventAttendee ]) }}"> 
-                    Kaban Board
+                    <a href=" {{route('event.edit',['event'=>$eventAttendee])}}"> 
+                    Kanban Board
                     </a>
                 </button>
                 @endif

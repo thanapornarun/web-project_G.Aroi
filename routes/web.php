@@ -108,7 +108,7 @@ Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'sto
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
 
-
+// Route::resource('/event/{event}/kanban', [KanbanBoardController::class])->name('kanban.index');   
 
 
 

@@ -36,6 +36,10 @@ class Event extends Model
         return $this->belongsTo(Cretificate::class);
     }
 
+    public function kanban():HasMany{
+        return $this->hasMany(KanbanBoard::class);
+    }
+
     protected $enum = [
         'category' => ['Education', 'Music and Festival'],
     ];
