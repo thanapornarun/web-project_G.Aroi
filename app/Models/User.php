@@ -57,10 +57,7 @@ class User extends Authenticatable
         return $this->hasMany(EventAttendee::class);
     }
 
-    public function certificate(): HasMany
-    {
-        return $this->HasMany(Event::class, 'event_attendees');
-    }
+
 
     // public function tasks(): HasMany
     // {
