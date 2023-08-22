@@ -72,7 +72,7 @@
                     <input type="text" id="title" name="title"
                     required
                     autocomplete = "on" placeholder="Put in category" class="border border-gray-300 shadow p-3 w-full rounded mb-">
-                </div>
+                </div>                   
                 <div class="mb-5">
                     <label for="poster_path" class="block mb-2 font-bold text-gray-600">Poster</label>
                     <input type="file" id="poster_path" name="poster_path"
