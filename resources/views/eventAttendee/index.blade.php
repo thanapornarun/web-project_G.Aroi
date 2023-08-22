@@ -46,9 +46,30 @@
                 <p class="text-black py-1">Event Description: {{ $eventAttendee->event->description }}</p>
                 <p class="text-black py-1"><i class="fa-solid fa-compact-disc fa-spin" style="--fa-animation-duration: 30s; --fa-animation-iteration-count: 1;"></i> Your Status: {{ $eventAttendee->status }}</p>
             </div>
+            
 
             <div class="flex justify-end">
-                <button class="px-2 py-1 text-black border border-gray-200 font-semibold rounded hover:bg-gray-800">Click Me</button>
+                <button class="px-2 py-1 text-black border border-gray-200 font-semibold rounded hover:bg-gray-800">
+                    <a href=" {{ route('event.show', [ 'event' => $eventAttendee ]) }}"> 
+                    Click Me
+                    </a>
+                </button>
+                @if($eventAttendee->event_role_id == 3||$eventAttendee->event_role_id == 5)
+                <button class="px-2 py-1 text-black border border-gray-200 font-semibold rounded hover:bg-gray-800">
+                    <a href=" {{route('event.edit',['event'=>$eventAttendee])}}"> 
+                    Kanban Board
+                    </a>
+                </button>
+                @endif
+            </div>
+            <div class="flex justify-end">
+            @if($eventAttendee->status == 'pass')
+                <button class="px-2 py-1 text-black border border-gray-200 font-semibold rounded hover:bg-gray-800">
+                    <a href=" {{ route('certificate', [ 'event' => $eventAttendee ]) }}"> 
+                    Certificate
+                    </a>
+                </button>
+            @endif
             </div>
         </div>
         @endforeach

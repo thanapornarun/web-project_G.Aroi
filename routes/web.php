@@ -40,8 +40,10 @@ Route::post('/profile/{profile}/editProfile', [ProfileController::class, 'update
 
 Route::resource('/event', EventController::class);
 
+
 //Route::resource('/create_event', EventController::class);
 Route::resource('/eventAttendee', EventAttendeeController::class);        
+
 
 // Route::resource('/event', EventController::class);
 
@@ -52,6 +54,13 @@ Route::middleware(['auth'])->group(function () {
     });
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
+
+
+Route::get('/event/{event}/certificate', function ($event) {
+        $events = Event::find($event);
+        return view('certificate.index',['event'=>$events]);
+    })->name("certificate");
+    
 
 // Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
@@ -90,6 +99,35 @@ Route::get('/event/{event}/budget/{budget}/{expense}',[BudgetController::class,'
 Route::get('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'createExpense'])->name('build.expense');
 
 Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'storeExpense'])->name('save.expense');
+
+// Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('build.expense');
+
+
+
+
+// Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
+
+
+// Route::resource('/event/{event}/kanban', [KanbanBoardController::class])->name('kanban.index');   
+
+
+
+// Route::get('/{user}/event', function () {
+
+
+
+// Route::get('/{user}/event', function () {
+//         return view('event.show-own-event');
+// });
+
+// Route::get('/{user}/event', [EventController::class, 'showUserEvents'])->name('user.event');
+
+
+
+// Route::get('/profile', [ProfileController::class, 'index'])
+//     ->name('profile.index');
+
+// Route::get('/web-login', LoginController::class)->name('web.login');
 
 // show form route
 // Route::get('web-login', 'Auth\LoginController@showLoginForm');

@@ -66,6 +66,8 @@
                     <a class="ml-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="{{route('budget.index',['event'=>$event])}}" style="background-color: #eebbc3; color: #232946;">
                         Budget
                     </a>
+                    <a class="ml-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="{{route('event.edit',['event'=>$event])}}" style="background-color: #eebbc3; color: #232946;">
+                        Kanban
 
                     <a class="mt-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="{{ route('setStatusManager', [ 'event' => $event ]) }}" style="background-color: #eebbc3; color: #232946;">
                         Set Status Event Attendee

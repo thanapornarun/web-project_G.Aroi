@@ -15,4 +15,8 @@ class Certificate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function Event();BelongsTo{
+        return $this->belongTo(Event::class);
+    }
 }
