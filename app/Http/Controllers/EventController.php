@@ -164,11 +164,20 @@ class EventController extends Controller
 
     public function setTeamManager(Request $request, Event $event)
     {
+        // $user = User::get()->where('name', $request->get('name'));
+        $user = User::where('name', $request->get('name'))->first();
+        
+        // dd($user);
+
+        // $userGet = $users::where('name', $request->get('UserName'));
+
         $eventAttendee = $event->eventAttendees()->create([
-            'user_id' => $request->get('userId'),
+            'user_id' => $user->id,
             'event_id' => $event->id,
             'event_role_id' => $request->get('eventRoleId'),
         ]);
+
+        // $eventAttendee = $event->eventAttendees()->find();
 
         $eventAttendee->status = 'pass';
         $eventAttendee->save();

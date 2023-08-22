@@ -45,16 +45,10 @@
                 <form action="{{ route('setEventRoleManager', ['event' => $event]) }}" method="POST">
                     @csrf
                     <label class="mt-5" for="userId" style="color: #0f0e17">User to Be Setting:</label>
-                    <select class="ml-5" name="userId">
-                        @foreach ($users as $user)
-                        @if ($user->id != Auth::user()->id)
-                        @if ($user)
-                            <option class="font-bold" value="{{$user->id}}" style="color: #0f0e17;">{{ $user->name }}</option>
-                        @endif
-                        @endif
-                        @endforeach
-                    </select>
-                    <label class="mt-5 ml-10" for="eventRoleId" style="color: #0f0e17">Role to Be Setting:</label>
+                    
+                    <input type="" class="appearance-none block w-full bg-gray-200 text-black font-bold border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="name" placeholder="">
+
+                    <label class="mt-5" for="eventRoleId" style="color: #0f0e17">Role to Be Setting:</label>
                     <select class="ml-5" name="eventRoleId">
                         @foreach ($eventRoles as $eventRole)
                         @if ($eventRole->roles != 'guest' && $eventRole->roles != 'owner' && $eventRole->roles != 'event attendee' )

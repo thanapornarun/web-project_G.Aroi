@@ -27,7 +27,9 @@
         @csrf
         <select class="ml-5" name="userId">
             @foreach ($eventJoin->eventAttendees as $EventAttendee )
-            <option class="font-bold" value="{{ $EventAttendee->user->id }}" style="color: #0f0e17;"> {{ $EventAttendee->user->name }} </option>
+            @if ($EventAttendee->status == 'not pass')
+                <option class="font-bold" value="{{ $EventAttendee->user->id }}" style="color: #0f0e17;"> {{ $EventAttendee->user->name }} </option>
+            @endif
             @endforeach
         </select>
         <button type="submit" class="ml-5 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">set</button>
