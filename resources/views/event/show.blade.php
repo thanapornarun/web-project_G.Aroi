@@ -36,10 +36,10 @@
         <div class="bg-white overflow-hidden shadow rounded-lg border">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="leading-6 font-bold text-gray-900">
-                    User Profile
+                    Event
                 </h3>
                 <p class="mt-6 max-w-2xl text-medium font-semibold text-gray-500">
-                    This is your profile page.
+                    This is event infomation page.
                 </p>
             </div>
             <div class="border-t border-gray-200 sm:p-0" style="padding: 60px;">

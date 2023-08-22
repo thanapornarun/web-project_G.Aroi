@@ -40,11 +40,10 @@ Route::post('/profile/{profile}/editProfile', [ProfileController::class, 'update
 
 Route::resource('/event', EventController::class);
 
-<<<<<<<<< Temporary merge branch 1
+
 //Route::resource('/create_event', EventController::class);
-=========
 Route::resource('/eventAttendee', EventAttendeeController::class);        
->>>>>>>>> Temporary merge branch 2
+
 
 // Route::resource('/event', EventController::class);
 
@@ -55,6 +54,13 @@ Route::middleware(['auth'])->group(function () {
     });
 
 Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
+
+
+Route::get('/event/{event}/certificate', function ($event) {
+        $events = Event::find($event);
+        return view('certificate.index',['event'=>$events]);
+    })->name("certificate");
+    
 
 // Route::get('/', [EventController::class, 'showWelcomeWithLatestEvent'])->name('show.latestEvent');
 
@@ -102,13 +108,13 @@ Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'sto
 // Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
 
 
-<<<<<<<<< Temporary merge branch 1
+
 
 
 
 // Route::get('/{user}/event', function () {
 
-=========
+
 
 // Route::get('/{user}/event', function () {
 //         return view('event.show-own-event');

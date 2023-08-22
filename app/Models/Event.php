@@ -32,6 +32,10 @@ class Event extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function certificate():BelongsTo{
+        return $this->belongsTo(Cretificate::class);
+    }
+
     protected $enum = [
         'category' => ['Education', 'Music and Festival'],
     ];

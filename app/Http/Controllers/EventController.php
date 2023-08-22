@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\EventAttendee;
 use App\Models\EventRole;
 use App\Models\User;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -58,7 +59,11 @@ class EventController extends Controller
             $event->event_poster_path = $path;
         }
 
+        
         $event->save();
+
+        $certificate = new Certificate();
+        $certificate->event_id = $event->id;
         return redirect()->route('budget.create',['event'=>$event]);
     }
 
@@ -124,6 +129,12 @@ class EventController extends Controller
         return view('welcome', ['latestEvents' => $latestEvents, 'events' => $events]);
     }
 
+    // public function showWelcomeWithAllEvent()
+    // {
+    //     $events = Event::get();
+    //     return view('welcome', ['events' => $events]);
+    // }
+
     public function userJoinEvent(Request $request, Event $event)
     {
         $user = auth()->user();
@@ -160,30 +171,7 @@ class EventController extends Controller
 
         $eventAttendee->status = 'pass';
         $eventAttendee->save();
-        
+
         return redirect()->route('event.index', ['event' => $event]);
-    }
-
-    public function setStatus(Event $event)
-    {
-        $eventsJoin = Event::with(['eventAttendees.user'])->where('id', $event->id)->get();
-        // dd($events);
-
-        return view('event.eventAttendeeSetStatus', ['event' => $event, 'eventsJoin' => $eventsJoin]);
-    }
-
-    public function setEventAttendeeStatus(Request $request, Event $event)
-    {
-        $eventAttendee = EventAttendee::get();
-
-        $eventAttendeeToSet = $eventAttendee->where('user_id', $request->input('userId'))->first();
-        // dd($eventAttendeeToSet);
-        // dd($eventAttendeeToSet);
-        $eventAttendeeToSet->status = 'pass';
-        $eventAttendeeToSet->save();
-
-        $events = Event::get();
-
-        return view('event.index', ['events' => $events]);
     }
 }
