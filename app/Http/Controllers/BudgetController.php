@@ -123,12 +123,12 @@ class BudgetController extends Controller
             $expense->expense_date = $request->get('date');
         }
 
-        if(!(is_null($request->file('image_path')))){
-            $path = $request->file('image_path')->store('images', 'public');
-            $expense->bill_path = $request->file('image_path');
+
+        if ($request->hasFile('image_path')) {
+		// บันทึกไฟล์รูปภาพลงใน folder ชื่อ 'artist_images' ที่ storage/app/public
+		$path = $request->file('image_path')->store('imagePath', 'public');
+		$expense->bill_path = $path;
         }
-
-
 // Check if bill_path is provided, otherwise use default
     
         $expense->save();

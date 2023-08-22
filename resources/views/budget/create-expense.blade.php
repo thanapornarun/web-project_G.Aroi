@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
 
-                                <input type="file" class="h-full w-full opacity-0" name="imagePath" id="imagePath">
+                                <input type="file" class="h-full w-full opacity-0" name="image_path" id="image_path">
                             </div>
                         </div>
                     </div>
