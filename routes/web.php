@@ -91,44 +91,6 @@ Route::get('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'crea
 
 Route::post('/eventCreate/{event}/budget/{budget}',[BudgetController::class,'storeExpense'])->name('save.expense');
 
-// Route::get('/event/{event}/budget/{budget}/create',[BudgetController::class,'createExpense'])->name('build.expense');
-
-
-
-
-// Route::get('/event', [EventController::class, 'showUserEvents'])->name('ownEvents');
-
-
-
-
-
-// Route::get('/{user}/event', function () {
-
-
-
-
-
-// Route::get('/my_event', [EventController::class, 'showUserEvents'])->name('ownEvents');
-
-// Route::get('/my_events', [EventController::class, 'index'])
-//         ->name('events.index');
-
-
-// Route::get('/{user}/my_event', function () {
-
-// Route::get('/{user}/event', function () {
-//         return view('event.show-own-event');
-// });
-
-// Route::get('/{user}/event', [EventController::class, 'showUserEvents'])->name('user.event');
-
-
-
-// Route::get('/profile', [ProfileController::class, 'index'])
-//     ->name('profile.index');
-
-// Route::get('/web-login', LoginController::class)->name('web.login');
-
 // show form route
 // Route::get('web-login', 'Auth\LoginController@showLoginForm');
 // // post credential to the login method
