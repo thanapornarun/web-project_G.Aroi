@@ -33,6 +33,7 @@ class Event extends Model
     }
 
 
+
     public function kanban():HasMany{
         return $this->hasMany(KanbanBoard::class);
     }

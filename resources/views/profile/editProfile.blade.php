@@ -92,13 +92,8 @@
                     // You can customize the appearance and behavior here
                 });
             </script>
-            <div class="max-w-sm font-bold" style="margin-left: 10px;">
-                <label for="photobutton" class="text-lg font-bold" style="color: #fffffe;">Your Photo</label>
-                <div class="relative z-0 mt-0.5 flex w-full -space-x-px">
-                    <input name="image" type="file" class="block w-full cursor-pointer appearance-none rounded-l-md border border-gray-200 bg-white px-3 py-2 text-sm transition focus:z-10 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75">
-                </div>
-            </div>
-            <button class="special-button" type="submit" style="margin-top: 80px; margin-left: -210px;">Update</button>
+    
+            <button class="special-button" type="submit" style="margin-top: 80px; margin-left: -140px; margin-bottom: -140px;">Update</button>
     </form>
 </body>
 

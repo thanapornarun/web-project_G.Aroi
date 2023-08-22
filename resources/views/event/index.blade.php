@@ -67,10 +67,12 @@
                     </a>
                     <a class="ml-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="{{route('event.edit',['event'=>$event])}}" style="background-color: #eebbc3; color: #232946;">
                         Kanban
-
+                    </a>
+                    @if (Count($event->eventAttendees) > 0)
                     <a class="mt-5 inline-block px-12 py-3 text-sm font-medium border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="{{ route('setStatusManager', [ 'event' => $event ]) }}" style="background-color: #eebbc3; color: #232946;">
                         Set Status Event Attendee
                     </a>
+                    @endif
                 </div>
                 <div class="px-6 py-3 flex flex-row items-center justify-between bg-gray-100">
                     <span href="#" class="py-1 text-lg font-regular text-gray-900 mr-1 flex flex-row items-center">

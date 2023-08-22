@@ -161,7 +161,12 @@ class EventController extends Controller
     {
         $users = User::get();
         $eventRoles = EventRole::get();
-        $eventAttendees = EventAttendee::get();
+
+        $eventAttendees = EventAttendee::with(['user'])->get();
+        // > EventAttendee::where('event_id',1)->where('user_id',2)->first()->event_role_id
+        // $users = User::with('eventAttendees')->get();
+        // dd($users);
+
         return view('event.team-manager', ['event' => $event, 'users' => $users, 'eventRoles' => $eventRoles, 'eventAttendees' => $eventAttendees]);
     }
 
@@ -177,5 +182,27 @@ class EventController extends Controller
         $eventAttendee->save();
 
         return redirect()->route('event.index', ['event' => $event]);
+    }
+
+    public function setStatus(Event $event)
+    {
+        // $users = User::get();
+
+        $eventJoin = Event::with('eventAttendees.user')->where('id', $event->id)->first();
+        // dd($eventJoin);
+        
+        return view('event.eventAttendeeSetStatus', ['event' => $event, 'eventJoin' => $eventJoin]);
+    }
+    
+    public function setEventAttendeeStatus(Request $request,Event $event)
+    {
+        $eventsJoin = Event::with('eventAttendees.user')->where('id', $event->id)->get();
+
+        $eventAttendee = EventAttendee::where('user_id', $request->userId)->first();
+        $eventAttendee->status = 'pass';
+        $eventAttendee->save();
+        // dd($eventAttendee);
+        $allEvent = Event::get();
+        return redirect()->route('event.index', ['event' => $allEvent]);
     }
 }

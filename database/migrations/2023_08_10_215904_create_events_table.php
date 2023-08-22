@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(User::class);
-            $table->string('event_poster_path');
+            $table->string('event_poster_path')->default('public/images/8084597.jpg');
             $table->string('event_name');
             $table->string('event_place');
             $table->integer('attendee_count');

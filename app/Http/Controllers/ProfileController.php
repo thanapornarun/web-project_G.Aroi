@@ -161,21 +161,22 @@ class ProfileController extends Controller
         if ($request->input('phone_number')) {
             $profile->phone_number = $request->input('phone_number');
         }
-        if ($request->input('profile_picture')) {
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $destinationPath = public_path('images');
-                $image->move($destinationPath, $filename);
-                $profilePicture = "/images/$filename";
-                $profile->profile_picture = $profilePicture;
-            }
-        }
+        // if ($request->input('profile_picture')) {
+        //     if ($request->hasFile('image')) {
+        //         $image = $request->file('image');
+        //         $destinationPath = public_path('images');
+        //         $image->move($destinationPath, $filename);
+        //         // public/public/images
+        //         $profilePicture = "public/public/images/$filename";
+        //         $profile->profile_picture = $profilePicture;
+        //     }
+        // }
         if ($request->input('data_of_birth')) {
             $profile->date_of_birth = $request->input('data_of_birth');
         }            
         
-        // dd($profile->profile_picture);
         $profile->save();
+        // dd($profile->profile_picture);
         $user->save();
 
         return redirect()->route('profile.index', ['profile' => $profile]);
