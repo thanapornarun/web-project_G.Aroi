@@ -174,4 +174,26 @@ class EventController extends Controller
 
         return redirect()->route('event.index', ['event' => $event]);
     }
+
+    public function setStatus(Event $event)
+    {
+        // $users = User::get();
+
+        $eventsJoin = Event::with('eventAttendees.user')->where('id', $event->id)->get();
+        // dd($eventJoin);
+        
+        return view('event.eventAttendeeSetStatus', ['event' => $event, 'eventsJoin' => $eventsJoin]);
+    }
+    
+    public function setEventAttendeeStatus(Request $request,Event $event)
+    {
+        $eventsJoin = Event::with('eventAttendees.user')->where('id', $event->id)->get();
+
+        $eventAttendee = EventAttendee::where('user_id', $request->userId)->first();
+        $eventAttendee->status = 'pass';
+        $eventAttendee->save();
+        // dd($eventAttendee);
+        $allEvent = Event::get();
+        return redirect()->route('event.index', ['event' => $allEvent]);
+    }
 }
