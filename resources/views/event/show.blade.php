@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="border-t border-gray-200 sm:p-0" style="padding: 60px;">
-                <img class="object-center" src="{{ $event->event_poster_path}} " alt="" style="height: 600px; width: 600px;"> </img>
+                <img class="object-center" src="{{ url('storage/'.$event->event_poster_path) }}" alt="" style="height: 600px; width: 600px;"> </img>
                 <h1 class="text-4xl">
                     Event Name:
                 </h1>

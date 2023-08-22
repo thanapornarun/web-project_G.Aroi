@@ -22,7 +22,7 @@
     <h1 class="text-center text-blue-400 font-bold text-6xl uppercase mb-10">FOR PARTICIPATING IN </h1> 
     <h1 class="text-center text-blue-400 font-bold text-4xl uppercase mb-10"> {{$event->event_name}} </h1>
     <center>
-    <img class="object-center" src="{{ $event->event_poster_path}} " alt="" style="height: 600px; width: 600px;"> </img>
+    <img class="object-center" src="{{ url('storage/'.$event->event_poster_path) }}" alt="" style="height: 600px; width: 600px;"> </img>
     </center>   
 
     <center>

@@ -22,7 +22,7 @@ class EventFactory extends Factory
 
         return [
             'user_id' => User::inRandomOrder()->first()->id,
-            'event_poster_path' => '/images/8084597.jpg',
+            'event_poster_path' => 'event_images/8084597.jpg',
             'event_name' => fake()->sentence(),
             'event_place' => fake()->country(),
             'attendee_count' => fake()->numberBetween(5, 20),

@@ -12,6 +12,12 @@
 
 </head>
 
+<style>
+    body {
+        background-color: #0f0e17;
+    }
+</style>
+
 <body>
     <div class="w-full">
         <h2 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Create Budget</h2>

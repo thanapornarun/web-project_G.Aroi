@@ -34,9 +34,10 @@
 <body>
 <h1 class="text-center text-blue-400 font-bold text-2xl uppercase mb-10">Join Success</h1>
 <center>
-<a class="mt-5 inline-block px-12 py-3 text-sm font-large border border-black rounded active:text-violet-50 hover:bg-transparent hover:text-violet-600 focus:outline-none focus:ring" href="/" style="background-color: #eebbc3; color: #232946;">
+        <button type="submit" class="mt-15 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"  href="/" style="margin-left: -7px;">
                         Accept
-</a>
+        </button>
+
 </center>
 </body>
 

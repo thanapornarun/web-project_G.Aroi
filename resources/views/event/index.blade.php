@@ -46,7 +46,7 @@
             <!-- CARD 1 -->
             <div class="rounded overflow-hidden shadow-lg flex flex-col bg-white">
                 <div class="relative">
-                    <img class="w-full" src="{{$event->event_poster_path}}" alt="">
+                    <img class="w-full" src="{{ url('storage/'.$event->event_poster_path) }}" alt="">
                     <div class="text-xs absolute top-0 right-0 bg-indigo-600 px-4 py-2 text-white mt-3 mr-3">
                         {{$event->category}}
                     </div>
