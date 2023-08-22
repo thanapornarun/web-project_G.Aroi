@@ -1,5 +1,3 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
     วิธีติดตั้ง
     1. clone [repo](https://github.com/thanapornarun/web-project_G.Aroi/tree/wk) ลงมาที่เครื่องคอมพิวเตอร์ที่ต้องการใช้งาน
